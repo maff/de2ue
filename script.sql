@@ -648,7 +648,69 @@ begin
 end
 
 
+create proc NeuerAuftrag
+	@Fahrer_ID int,
+	@Kunde_ID int, 
+	@Status_ID int,
+	@Kilometer decimal(10,2), 
+	@Strasse nvarchar(50),
+	@PLZ int,
+	@Ort nvarchar(60),
+	@Land nvarchar(30)
+as
+begin
+	declare @Ort_ID as int
+	declare @Adresse_ID as int
+	declare @Auftrag_ID as int
 
+	declare @OrtTmp as int
+	select @OrtTmp = (select Count(Ort_ID) from Orte where Ortsname=@Ort and PLZ=@PLZ and Land=@Land)
+
+	if (@OrtTmp = 1)
+		begin
+			select @Ort_ID = (select Ort_ID from Orte where Ortsname=@Ort and PLZ=@PLZ and Land=@Land)
+		end
+	else
+		begin
+			insert into Orte(Ortsname, PLZ, Land) values (@Ort, @PLZ, @Land)
+			select @Ort_ID = @@identity
+		end
+
+	declare @AdresseTmp as int
+	select @AdresseTmp = (select Count(Adresse_ID) from Adressen where Strasse=@Strasse and Ort_ID=@Ort_ID)
+
+	if (@AdresseTmp = 1)
+		begin
+			select @Adresse_ID = (select Adresse_ID from Adressen where Strasse=@Strasse and Ort_ID=@Ort_ID)
+		end
+	else
+		begin
+			insert into Adressen(Strasse, Ort_ID) values (@Strasse, @Ort_ID)
+			select @Adresse_ID = @@identity
+		end
+
+	insert into Auftraege (Fahrer_ID, Kunde_ID, Status_ID) values (@Fahrer_ID, @Kunde_ID, @Status_ID)
+	select @Auftrag_ID = @@identity
+
+	insert into Auftrag_Adresse(Auftrag_ID, Adresse_ID) values (@Adresse_ID, @Auftrag_ID)
+end
+
+
+
+------------------------------------------------------
+create proc NeuesPaket
+ @Auftrags_ID int,
+ @Titel varchar(40), 
+ @Hoehe decimal(10,2), 
+ @Breite decimal(10,2),
+ @Tiefe decimal(10,2), 
+ @Gewicht decimal(10,2), 
+ @Fragile bit,
+ @Startzeit datetime,
+ @Endzeit datetime,
+ 
+as
+ declare @
 
 
 
