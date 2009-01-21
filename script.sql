@@ -119,8 +119,8 @@ create table Auftraege (
 	Kilometer decimal(10,2) not null,
 	Datum DateTime not null,
 	Gesamtgewicht decimal(10,2) null,
-	Startzeit DateTime not null,
-	Endzeit DateTime not null,
+	Startzeit DateTime null,
+	Endzeit DateTime null,
 	Dauer as DateDiff(minute, Startzeit, Endzeit)
 )
 
@@ -524,9 +524,12 @@ group by a.Kunde_ID, p.Vorname, p.Nachname
 
 --
 
-create proc AuftragNachStatusID @s int as
-select * from AuftragUebersicht
-where Status_ID = @s
+create proc AuftragNachStatusID
+	@s int
+as
+begin
+	select * from AuftragUebersicht where Status_ID = @s
+end
 
 create proc NeuerFahrer
 	@Anrede varchar(20),
@@ -585,6 +588,7 @@ begin
 		values(@Person_ID, @Geburtsdatum, @SVNummer, @PassNummer)
 
 	select @Fahrer_ID = @@identity
+	return @Fahrer_ID
 end
 
 create proc NeuerKunde
@@ -644,14 +648,15 @@ begin
 	insert into Kunden(Person_ID, Firma, KreditkartenNummer, KreditkartenPZ, PremiumKunde)
 		values(@Person_ID, @Firma, @KreditkartenNummer, @KreditkartenPZ, @PremiumKunde)
 
-	select @Fahrer_ID = @@identity
+	select @Kunde_ID = @@identity
+	return @Kunde_ID
 end
 
 
-create proc NeuerAuftrag
+alter proc NeuerAuftrag
 	@Fahrer_ID int,
 	@Kunde_ID int, 
-	@Status_ID int,
+	@Statustitel varchar(20),
 	@Kilometer decimal(10,2), 
 	@Strasse nvarchar(50),
 	@PLZ int,
@@ -662,6 +667,7 @@ begin
 	declare @Ort_ID as int
 	declare @Adresse_ID as int
 	declare @Auftrag_ID as int
+	declare @Status_ID as int
 
 	declare @OrtTmp as int
 	select @OrtTmp = (select Count(Ort_ID) from Orte where Ortsname=@Ort and PLZ=@PLZ and Land=@Land)
@@ -689,30 +695,90 @@ begin
 			select @Adresse_ID = @@identity
 		end
 
-	insert into Auftraege (Fahrer_ID, Kunde_ID, Status_ID) values (@Fahrer_ID, @Kunde_ID, @Status_ID)
+	declare @StatusTmp as int
+	select @StatusTmp = (select Count(Status_ID) from Status where Statustitel=@Statustitel)
+
+	if (@StatusTmp = 1)
+		begin
+			select @Status_ID = (select Status_ID from Status where Statustitel=@Statustitel)
+		end
+	else
+		begin
+			insert into Status(Statustitel) values (@Statustitel)
+			select @Status_ID = @@identity
+		end
+
+	begin transaction
+	insert into Auftraege with(tablockx)
+	(Fahrer_ID, Kunde_ID, Status_ID, Kilometer, Datum) values (@Fahrer_ID, @Kunde_ID, @Status_ID, @Kilometer, getDate())
+	
+
 	select @Auftrag_ID = @@identity
 
-	insert into Auftrag_Adresse(Auftrag_ID, Adresse_ID) values (@Adresse_ID, @Auftrag_ID)
+	insert into Auftrag_Adresse(Auftrag_ID, Adresse_ID) values (@Auftrag_ID, @Adresse_ID)
+	
+	return @Auftrag_ID
 end
 
-
-
-------------------------------------------------------
 create proc NeuesPaket
- @Auftrags_ID int,
- @Titel varchar(40), 
- @Hoehe decimal(10,2), 
- @Breite decimal(10,2),
- @Tiefe decimal(10,2), 
- @Gewicht decimal(10,2), 
- @Fragile bit,
- @Startzeit datetime,
- @Endzeit datetime,
- 
+	@Auftrag_ID int,
+	@Titel varchar(40), 
+	@Hoehe decimal(10,2), 
+	@Breite decimal(10,2),
+	@Tiefe decimal(10,2), 
+	@Gewicht decimal(10,2), 
+	@Fragile bit
 as
- declare @
+begin
+	insert into Pakete(Auftrag_ID, Titel, Hoehe, Breite, Tiefe, Gewicht, Fragile)
+	values (@Auftrag_ID, @Titel, @Hoehe, @Breite, @Tiefe, @Gewicht, @Fragile)
 
+	return @@identity
+end
 
+create proc AuftragStarten
+	@Auftrag_ID int,
+	@Statustitel varchar(20)
+as
+begin
+	declare @StatusTmp as int
+	declare @Status_ID as int
+	select @StatusTmp = (select Count(Status_ID) from Status where Statustitel=@Statustitel)
+
+	if (@StatusTmp = 1)
+		begin
+			select @Status_ID = (select Status_ID from Status where Statustitel=@Statustitel)
+		end
+	else
+		begin
+			insert into Status(Statustitel) values (@Statustitel)
+			select @Status_ID = @@identity
+		end
+
+	update Auftraege set Startzeit=getdate(), Status_ID=@Status_ID where Auftrag_ID=@Auftrag_ID
+end 
+
+create proc AuftragStoppen
+	@Auftrag_ID int,
+	@Statustitel varchar(20)
+as
+begin
+	declare @StatusTmp as int
+	declare @Status_ID as int
+	select @StatusTmp = (select Count(Status_ID) from Status where Statustitel=@Statustitel)
+
+	if (@StatusTmp = 1)
+		begin
+			select @Status_ID = (select Status_ID from Status where Statustitel=@Statustitel)
+		end
+	else
+		begin
+			insert into Status(Statustitel) values (@Statustitel)
+			select @Status_ID = @@identity
+		end
+
+	update Auftraege set Endzeit=getdate(), Status_ID=@Status_ID where Auftrag_ID=@Auftrag_ID
+end 
 
 
 
@@ -728,6 +794,7 @@ select * from FahrerAnzeigen
 
 select *  from adressen
 select * from orte
+select * from status
 
 AuftragNachStatusID 2
 AuftragNachStatusName Offen
@@ -740,7 +807,11 @@ select sum(gesamtgewicht)/1000 as Kilo from auftraege
 group by fahrer_ID
 
 
-
+declare @Auftrag_ID as int
+select @Auftrag_ID = NeuerAuftrag 1000, 1000, "Neu 1", 10.4, "Teststrasse 12", 6020, "Innsbruck", "Österreich"
+NeuesPaket @Auftrag_ID, "Testpaket 1", 10, 5, 15, 2500, 0
+NeuesPaket @Auftrag_ID, "Testpaket 2", 15, 10, 5, 2500, 0
+NeuesPaket @Auftrag_ID, "Testpaket 3", 5, 15, 10, 2500, 0
 
 
 ((sum(kilometer) * sum(gesamtgewicht) * 0.4) + (sum(datediff(hour ,b.startzeit, b.endzeit))*20)) as Lohn
