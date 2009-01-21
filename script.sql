@@ -259,7 +259,7 @@ create index Orte_Ortsname on Orte(Ortsname)
 go
 
 /* Gesamtgewichtberechnung */
-create trigger AuftragGesamtgewicht
+alter trigger AuftragGesamtgewicht
 on Pakete
 for insert, delete, update as
 update Auftraege
@@ -267,6 +267,8 @@ set Gesamtgewicht =
 	(select sum(Pakete.Gewicht)
 		from Pakete
 		inner join inserted on Pakete.Auftrag_ID = inserted.Auftrag_ID)
+from auftraege a inner join inserted 
+on a.Auftrag_ID = inserted.Auftrag_ID
 
 go
 
@@ -829,6 +831,6 @@ declare @Auftrag_ID as int
 execute @Auftrag_ID = NeuerAuftrag 1000, 1000, 'TestNeu', 15, 'MuseumStrasse 30', 6020, 'Innsbruck', 'Österreich'
 /* print @Auftrag_ID */
 /* go */
-execute NeuesPaket @Auftrag_ID, 'Testpaket 1', 10, 5, 15, 2500, 0
-execute NeuesPaket @Auftrag_ID, 'Testpaket 2', 15, 10, 5, 2500, 0
-execute NeuesPaket @Auftrag_ID, 'Testpaket 3', 5, 15, 10, 2500, 0
+execute NeuesPaket @Auftrag_ID, 'NeuTestpaket 1', 10, 5, 15, 2222, 0
+execute NeuesPaket @Auftrag_ID, 'NeuTestpaket 2', 15, 10, 5, 2222, 0
+execute NeuesPaket @Auftrag_ID, 'NeuTestpaket 3', 5, 15, 10, 2222, 0
