@@ -496,11 +496,13 @@ sum((Gesamtfahrstrecke * Kilo * 0.1) + (Bereitschaftszeit*20)) as Lohn
 from Lohnhilfe
 group by Jahr, Monat, Fahrer_ID, Vorname, Nachname
 
-create view AuftragUebersicht as
+select view AuftragUebersicht as
 select
 	fp.Vorname + ' ' + fp.Nachname as Fahrer,
 	kp.Vorname + ' ' + kp.Nachname as Kunde,
     a.Status_ID,
+	a.Kunde_ID,
+	a.Fahrer_ID,
 	s.Statustitel as Status,
 	a.Kilometer,
 	a.Datum,
@@ -523,6 +525,13 @@ inner join personen as p on k.person_ID = p.person_ID
 group by a.Kunde_ID, p.Vorname, p.Nachname
 
 --
+
+create proc AuftraegeProKunde
+	@Kunde_ID int
+as
+begin
+	select * from AuftragUebersicht where Kunde_ID = @Kunde_ID
+end
 
 create proc AuftragNachStatusID
 	@s int
@@ -709,11 +718,13 @@ begin
 		end
 
 	begin transaction
-	insert into Auftraege with(tablockx)
-	(Fahrer_ID, Kunde_ID, Status_ID, Kilometer, Datum) values (@Fahrer_ID, @Kunde_ID, @Status_ID, @Kilometer, getDate())
-	
-
-	select @Auftrag_ID = @@identity
+		insert into Auftraege with(tablockx)
+			(Fahrer_ID, Kunde_ID, Status_ID, Kilometer, Datum)
+		values
+			(@Fahrer_ID, @Kunde_ID, @Status_ID, @Kilometer, getDate())
+		
+		select @Auftrag_ID=(select max(Auftrag_ID) from Auftraege with(tablockx))
+	commit
 
 	insert into Auftrag_Adresse(Auftrag_ID, Adresse_ID) values (@Auftrag_ID, @Adresse_ID)
 	
@@ -796,22 +807,28 @@ select *  from adressen
 select * from orte
 select * from status
 
-AuftragNachStatusID 2
-AuftragNachStatusName Offen
+
 
 select * from auftraege
 select * from bereitschaftszeiten
 select * from fahrer
 
-select sum(gesamtgewicht)/1000 as Kilo from auftraege
-group by fahrer_ID
 
+AuftragNachStatusID 2
+AuftragNachStatusName Offen
 
 declare @Auftrag_ID as int
-select @Auftrag_ID = NeuerAuftrag 1000, 1000, "Neu 1", 10.4, "Teststrasse 12", 6020, "Innsbruck", "Österreich"
-NeuesPaket @Auftrag_ID, "Testpaket 1", 10, 5, 15, 2500, 0
-NeuesPaket @Auftrag_ID, "Testpaket 2", 15, 10, 5, 2500, 0
-NeuesPaket @Auftrag_ID, "Testpaket 3", 5, 15, 10, 2500, 0
+execute @Auftrag_ID = NeuerAuftrag 1000, 1000, 'Neu', 10.4, 'Teststrasse 12', 6020, 'Innsbruck', 'Österreich'
+/* print @Auftrag_ID */
+/* go */
+execute NeuesPaket @Auftrag_ID, 'Testpaket 1', 10, 5, 15, 2500, 0
+execute NeuesPaket @Auftrag_ID, 'Testpaket 2', 15, 10, 5, 2500, 0
+execute NeuesPaket @Auftrag_ID, 'Testpaket 3', 5, 15, 10, 2500, 0
 
-
-((sum(kilometer) * sum(gesamtgewicht) * 0.4) + (sum(datediff(hour ,b.startzeit, b.endzeit))*20)) as Lohn
+declare @Auftrag_ID as int
+execute @Auftrag_ID = NeuerAuftrag 1000, 1000, 'TestNeu', 15, 'MuseumStrasse 30', 6020, 'Innsbruck', 'Österreich'
+/* print @Auftrag_ID */
+/* go */
+execute NeuesPaket @Auftrag_ID, 'Testpaket 1', 10, 5, 15, 2500, 0
+execute NeuesPaket @Auftrag_ID, 'Testpaket 2', 15, 10, 5, 2500, 0
+execute NeuesPaket @Auftrag_ID, 'Testpaket 3', 5, 15, 10, 2500, 0
