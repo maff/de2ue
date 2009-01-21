@@ -528,6 +528,15 @@ group by a.Kunde_ID, p.Vorname, p.Nachname
 
 --
 
+create proc AuftragRechnung
+	@Auftrag_ID int
+as
+begin
+	select sum((Gesamtgewicht/1000) * Kilometer * 0.5) as Betrag
+	from Auftraege a
+	where Auftrag_ID = @Auftrag_ID
+end
+
 create proc AuftraegeProKunde
 	@Kunde_ID int
 as
@@ -793,10 +802,94 @@ begin
 	update Auftraege set Endzeit=getdate(), Status_ID=@Status_ID where Auftrag_ID=@Auftrag_ID
 end 
 
+/* Permissions */
+
+create login Geat with password = '1234'
+create login Krause with password = '1234'
+
+sp_grantdbaccess geat
+sp_grantdbaccess krause
+
+CREATE ROLE buero 
+GO
+
+USE de2_uebung_fahrradkurier
+CREATE ROLE fahrer
+GO
+
+USE de2_uebung_fahrradkurier
+CREATE ROLE kunde
+GO
+
+sp_addrolemember buero, geat
+sp_addrolemember buero, krause
+
+--------------------------------------------------------
+--Buero
+
+grant select, insert, delete, update on Adressen to buero
+grant select, insert, delete, update on Auftraege to buero
+grant select, insert, delete, update on Auftrag_Adresse to buero
+grant select, insert, delete, update on AuftragProtokoll to buero
+grant select, insert, delete, update on Bereitschaftszeiten to buero
+grant select, insert, delete, update on Fahrer to buero
+grant select, insert, delete, update on Kunden to buero
+grant select, insert, delete, update on Orte to buero
+grant select, insert, delete, update on Pakete to buero
+grant select, insert, delete, update on Person_Adresse to buero
+grant select, insert, delete, update on Personen to buero
+grant select, insert, delete, update on Stauts to buero
+
+grant select on AuftragUebersicht to buero
+grant select on FahrerAnzeigen to buero
+grant select on IstEinsatzzeit to buero
+grant select on Kundenanzeigen to buero
+grant select on Lohn to buero
+grant select on Lohnhilfe to buero
+grant select on StatusUebersicht to buero
+grant select on UmsatzProKunde to buero
+
+grant execute on AuftraegeProKunde to buero
+grant execute on AuftragNachStatusID to buero
+grant execute on AuftragStarten to buero
+grant execute on AuftragStoppen to buero
+grant execute on NeuerAuftrag to buero
+grant execute on NeuerFahrer to buero
+grant execute on NeuerKunde to buero
+grant execute on NeuesPaket to buero
+grant execute on AuftragRechnung to buero
+--------------------------------------------------------
+-- Fahrer
+
+grant select on Auftrage to fahrer
+grant select on Bereitschaftszeiten to fahrer
+grant select on Pakete to fahrer
+grant select on Status to fahrer
+grant select on Adressen to fahrer
+grant select on Orte to fahrer
+
+
+grant select on IstEinsatzzeit to fahrer
+grant select on StatusUebersicht to fahrer
+grant select on AuftraegeProKunde to fahrer
+grant select on IstEinsatzzeit to fahrer
+grant select on AuftraegeProKunde to fahrer
+grant select on Lohn to fahrer
+---------------------------------------------------------------
+--Kunde
+
+grant select on AuftraegeProKunde to kunde
+grant select on KundenAnzeigen to kunde 
+grant select on Pakete on kunde
+grant select on StatusUebersicht to kunde
+grant select on AuftraegeProKunde to kunde
+grant select on UmsatzProKunde to kunde
+grant select on AuftraegeProKunde to kunde
+grant select on AuftragRechnung to kunde
 
 
 
-select * from StatusUebersicht
+/*select * from StatusUebersicht
 select * from IstEinsatzzeit
 select * from Lohnhilfe
 select * from Lohn
@@ -821,16 +914,13 @@ AuftragNachStatusName Offen
 
 declare @Auftrag_ID as int
 execute @Auftrag_ID = NeuerAuftrag 1000, 1000, 'Neu', 10.4, 'Teststrasse 12', 6020, 'Innsbruck', 'Österreich'
-/* print @Auftrag_ID */
-/* go */
 execute NeuesPaket @Auftrag_ID, 'Testpaket 1', 10, 5, 15, 2500, 0
 execute NeuesPaket @Auftrag_ID, 'Testpaket 2', 15, 10, 5, 2500, 0
 execute NeuesPaket @Auftrag_ID, 'Testpaket 3', 5, 15, 10, 2500, 0
 
 declare @Auftrag_ID as int
 execute @Auftrag_ID = NeuerAuftrag 1000, 1000, 'TestNeu', 15, 'MuseumStrasse 30', 6020, 'Innsbruck', 'Österreich'
-/* print @Auftrag_ID */
-/* go */
 execute NeuesPaket @Auftrag_ID, 'NeuTestpaket 1', 10, 5, 15, 2222, 0
 execute NeuesPaket @Auftrag_ID, 'NeuTestpaket 2', 15, 10, 5, 2222, 0
 execute NeuesPaket @Auftrag_ID, 'NeuTestpaket 3', 5, 15, 10, 2222, 0
+*/
