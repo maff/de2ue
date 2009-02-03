@@ -29,15 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPanel = new System.Windows.Forms.TabControl();
             this.tabFahrer = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridFahrer = new System.Windows.Forms.DataGridView();
-            this.buttonNewDriver = new System.Windows.Forms.Button();
-            this.de2_uebung_fahrradkurierDataSet = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet();
-            this.fahrerAnzeigenBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fahrerAnzeigenTableAdapter = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSetTableAdapters.FahrerAnzeigenTableAdapter();
+            this.fahrerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.de2_uebung_fahrradkurierDataSet1 = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet1();
+            this.dataGridViewFahrer = new System.Windows.Forms.DataGridView();
             this.anredeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vornameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nachnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,73 +46,85 @@
             this.geburtsdatumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sVNummerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passnummerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridFahrerTable = new System.Windows.Forms.DataGridView();
-            this.de2_uebung_fahrradkurierDataSet1 = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet1();
-            this.fahrerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fahrerAnzeigenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.de2_uebung_fahrradkurierDataSet = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonNewDriver = new System.Windows.Forms.Button();
+            this.tabAuftraege = new System.Windows.Forms.TabPage();
+            this.fahrerAnzeigenTableAdapter = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSetTableAdapters.FahrerAnzeigenTableAdapter();
             this.fahrerTableAdapter = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet1TableAdapters.FahrerTableAdapter();
-            this.fahrerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.personIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.geburtsdatumDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sVNummerDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passNummerDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabControl1.SuspendLayout();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonNeuerAuftrag = new System.Windows.Forms.Button();
+            this.dataGridViewAuftraege = new System.Windows.Forms.DataGridView();
+            this.de2uebungfahrradkurierDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.de2_uebung_fahrradkurierDataSet2 = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet2();
+            this.auftragUebersichtBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.auftragUebersichtTableAdapter = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet2TableAdapters.AuftragUebersichtTableAdapter();
+            this.fahrerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kundeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kilometerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gesamtgewichtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startzeitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endzeitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPanel.SuspendLayout();
             this.tabFahrer.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridFahrer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fahrerAnzeigenBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridFahrerTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fahrerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFahrer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fahrerAnzeigenBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.tabAuftraege.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuftraege)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.de2uebungfahrradkurierDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.auftragUebersichtBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tabPanel
             // 
-            this.tabControl1.Controls.Add(this.tabFahrer);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 13);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1038, 603);
-            this.tabControl1.TabIndex = 2;
+            this.tabPanel.Controls.Add(this.tabFahrer);
+            this.tabPanel.Controls.Add(this.tabAuftraege);
+            this.tabPanel.Location = new System.Drawing.Point(12, 13);
+            this.tabPanel.Name = "tabPanel";
+            this.tabPanel.SelectedIndex = 0;
+            this.tabPanel.Size = new System.Drawing.Size(1040, 603);
+            this.tabPanel.TabIndex = 2;
             // 
             // tabFahrer
             // 
-            this.tabFahrer.Controls.Add(this.dataGridFahrerTable);
-            this.tabFahrer.Controls.Add(this.dataGridFahrer);
+            this.tabFahrer.Controls.Add(this.dataGridViewFahrer);
             this.tabFahrer.Controls.Add(this.panel1);
             this.tabFahrer.Location = new System.Drawing.Point(4, 22);
             this.tabFahrer.Name = "tabFahrer";
             this.tabFahrer.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFahrer.Size = new System.Drawing.Size(1030, 577);
+            this.tabFahrer.Size = new System.Drawing.Size(1032, 577);
             this.tabFahrer.TabIndex = 0;
             this.tabFahrer.Text = "Fahrer";
             this.tabFahrer.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // fahrerBindingSource
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1030, 577);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.fahrerBindingSource.DataMember = "Fahrer";
+            this.fahrerBindingSource.DataSource = this.de2_uebung_fahrradkurierDataSet1;
             // 
-            // panel1
+            // de2_uebung_fahrradkurierDataSet1
             // 
-            this.panel1.BackColor = System.Drawing.Color.DimGray;
-            this.panel1.Controls.Add(this.buttonNewDriver);
-            this.panel1.Location = new System.Drawing.Point(6, 540);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1018, 31);
-            this.panel1.TabIndex = 2;
+            this.de2_uebung_fahrradkurierDataSet1.DataSetName = "de2_uebung_fahrradkurierDataSet1";
+            this.de2_uebung_fahrradkurierDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // dataGridFahrer
+            // dataGridViewFahrer
             // 
-            this.dataGridFahrer.AutoGenerateColumns = false;
-            this.dataGridFahrer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridFahrer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewFahrer.AllowUserToAddRows = false;
+            this.dataGridViewFahrer.AllowUserToDeleteRows = false;
+            this.dataGridViewFahrer.AutoGenerateColumns = false;
+            this.dataGridViewFahrer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewFahrer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.anredeDataGridViewTextBoxColumn,
             this.vornameDataGridViewTextBoxColumn,
             this.nachnameDataGridViewTextBoxColumn,
@@ -129,11 +137,115 @@
             this.geburtsdatumDataGridViewTextBoxColumn,
             this.sVNummerDataGridViewTextBoxColumn,
             this.passnummerDataGridViewTextBoxColumn});
-            this.dataGridFahrer.DataSource = this.fahrerAnzeigenBindingSource;
-            this.dataGridFahrer.Location = new System.Drawing.Point(7, 7);
-            this.dataGridFahrer.Name = "dataGridFahrer";
-            this.dataGridFahrer.Size = new System.Drawing.Size(1014, 214);
-            this.dataGridFahrer.TabIndex = 3;
+            this.dataGridViewFahrer.DataSource = this.fahrerAnzeigenBindingSource;
+            this.dataGridViewFahrer.Location = new System.Drawing.Point(6, 6);
+            this.dataGridViewFahrer.Name = "dataGridViewFahrer";
+            this.dataGridViewFahrer.ReadOnly = true;
+            this.dataGridViewFahrer.Size = new System.Drawing.Size(1015, 528);
+            this.dataGridViewFahrer.TabIndex = 3;
+            // 
+            // anredeDataGridViewTextBoxColumn
+            // 
+            this.anredeDataGridViewTextBoxColumn.DataPropertyName = "Anrede";
+            this.anredeDataGridViewTextBoxColumn.HeaderText = "Anrede";
+            this.anredeDataGridViewTextBoxColumn.Name = "anredeDataGridViewTextBoxColumn";
+            this.anredeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // vornameDataGridViewTextBoxColumn
+            // 
+            this.vornameDataGridViewTextBoxColumn.DataPropertyName = "Vorname";
+            this.vornameDataGridViewTextBoxColumn.HeaderText = "Vorname";
+            this.vornameDataGridViewTextBoxColumn.Name = "vornameDataGridViewTextBoxColumn";
+            this.vornameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nachnameDataGridViewTextBoxColumn
+            // 
+            this.nachnameDataGridViewTextBoxColumn.DataPropertyName = "Nachname";
+            this.nachnameDataGridViewTextBoxColumn.HeaderText = "Nachname";
+            this.nachnameDataGridViewTextBoxColumn.Name = "nachnameDataGridViewTextBoxColumn";
+            this.nachnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // telefonnummerDataGridViewTextBoxColumn
+            // 
+            this.telefonnummerDataGridViewTextBoxColumn.DataPropertyName = "Telefonnummer";
+            this.telefonnummerDataGridViewTextBoxColumn.HeaderText = "Telefonnummer";
+            this.telefonnummerDataGridViewTextBoxColumn.Name = "telefonnummerDataGridViewTextBoxColumn";
+            this.telefonnummerDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // strasseDataGridViewTextBoxColumn
+            // 
+            this.strasseDataGridViewTextBoxColumn.DataPropertyName = "Strasse";
+            this.strasseDataGridViewTextBoxColumn.HeaderText = "Strasse";
+            this.strasseDataGridViewTextBoxColumn.Name = "strasseDataGridViewTextBoxColumn";
+            this.strasseDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pLZDataGridViewTextBoxColumn
+            // 
+            this.pLZDataGridViewTextBoxColumn.DataPropertyName = "PLZ";
+            this.pLZDataGridViewTextBoxColumn.HeaderText = "PLZ";
+            this.pLZDataGridViewTextBoxColumn.Name = "pLZDataGridViewTextBoxColumn";
+            this.pLZDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ortDataGridViewTextBoxColumn
+            // 
+            this.ortDataGridViewTextBoxColumn.DataPropertyName = "Ort";
+            this.ortDataGridViewTextBoxColumn.HeaderText = "Ort";
+            this.ortDataGridViewTextBoxColumn.Name = "ortDataGridViewTextBoxColumn";
+            this.ortDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // landDataGridViewTextBoxColumn
+            // 
+            this.landDataGridViewTextBoxColumn.DataPropertyName = "Land";
+            this.landDataGridViewTextBoxColumn.HeaderText = "Land";
+            this.landDataGridViewTextBoxColumn.Name = "landDataGridViewTextBoxColumn";
+            this.landDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // geburtsdatumDataGridViewTextBoxColumn
+            // 
+            this.geburtsdatumDataGridViewTextBoxColumn.DataPropertyName = "Geburtsdatum";
+            this.geburtsdatumDataGridViewTextBoxColumn.HeaderText = "Geburtsdatum";
+            this.geburtsdatumDataGridViewTextBoxColumn.Name = "geburtsdatumDataGridViewTextBoxColumn";
+            this.geburtsdatumDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sVNummerDataGridViewTextBoxColumn
+            // 
+            this.sVNummerDataGridViewTextBoxColumn.DataPropertyName = "SVNummer";
+            this.sVNummerDataGridViewTextBoxColumn.HeaderText = "SVNummer";
+            this.sVNummerDataGridViewTextBoxColumn.Name = "sVNummerDataGridViewTextBoxColumn";
+            this.sVNummerDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // passnummerDataGridViewTextBoxColumn
+            // 
+            this.passnummerDataGridViewTextBoxColumn.DataPropertyName = "Passnummer";
+            this.passnummerDataGridViewTextBoxColumn.HeaderText = "Passnummer";
+            this.passnummerDataGridViewTextBoxColumn.Name = "passnummerDataGridViewTextBoxColumn";
+            this.passnummerDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fahrerAnzeigenBindingSource
+            // 
+            this.fahrerAnzeigenBindingSource.DataMember = "FahrerAnzeigen";
+            this.fahrerAnzeigenBindingSource.DataSource = this.de2_uebung_fahrradkurierDataSet;
+            // 
+            // de2_uebung_fahrradkurierDataSet
+            // 
+            this.de2_uebung_fahrradkurierDataSet.DataSetName = "de2_uebung_fahrradkurierDataSet";
+            this.de2_uebung_fahrradkurierDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.DimGray;
+            this.panel1.Controls.Add(this.buttonNewDriver);
+            this.panel1.Location = new System.Drawing.Point(6, 540);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1018, 31);
+            this.panel1.TabIndex = 2;
             // 
             // buttonNewDriver
             // 
@@ -145,182 +257,194 @@
             this.buttonNewDriver.UseVisualStyleBackColor = true;
             this.buttonNewDriver.Click += new System.EventHandler(this.buttonNewDriver_Click);
             // 
-            // de2_uebung_fahrradkurierDataSet
+            // tabAuftraege
             // 
-            this.de2_uebung_fahrradkurierDataSet.DataSetName = "de2_uebung_fahrradkurierDataSet";
-            this.de2_uebung_fahrradkurierDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // fahrerAnzeigenBindingSource
-            // 
-            this.fahrerAnzeigenBindingSource.DataMember = "FahrerAnzeigen";
-            this.fahrerAnzeigenBindingSource.DataSource = this.de2_uebung_fahrradkurierDataSet;
+            this.tabAuftraege.Controls.Add(this.dataGridViewAuftraege);
+            this.tabAuftraege.Controls.Add(this.panel2);
+            this.tabAuftraege.Location = new System.Drawing.Point(4, 22);
+            this.tabAuftraege.Name = "tabAuftraege";
+            this.tabAuftraege.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAuftraege.Size = new System.Drawing.Size(1032, 577);
+            this.tabAuftraege.TabIndex = 1;
+            this.tabAuftraege.Text = "Aufträge";
+            this.tabAuftraege.UseVisualStyleBackColor = true;
             // 
             // fahrerAnzeigenTableAdapter
             // 
             this.fahrerAnzeigenTableAdapter.ClearBeforeFill = true;
             // 
-            // anredeDataGridViewTextBoxColumn
-            // 
-            this.anredeDataGridViewTextBoxColumn.DataPropertyName = "Anrede";
-            this.anredeDataGridViewTextBoxColumn.HeaderText = "Anrede";
-            this.anredeDataGridViewTextBoxColumn.Name = "anredeDataGridViewTextBoxColumn";
-            // 
-            // vornameDataGridViewTextBoxColumn
-            // 
-            this.vornameDataGridViewTextBoxColumn.DataPropertyName = "Vorname";
-            this.vornameDataGridViewTextBoxColumn.HeaderText = "Vorname";
-            this.vornameDataGridViewTextBoxColumn.Name = "vornameDataGridViewTextBoxColumn";
-            // 
-            // nachnameDataGridViewTextBoxColumn
-            // 
-            this.nachnameDataGridViewTextBoxColumn.DataPropertyName = "Nachname";
-            this.nachnameDataGridViewTextBoxColumn.HeaderText = "Nachname";
-            this.nachnameDataGridViewTextBoxColumn.Name = "nachnameDataGridViewTextBoxColumn";
-            // 
-            // telefonnummerDataGridViewTextBoxColumn
-            // 
-            this.telefonnummerDataGridViewTextBoxColumn.DataPropertyName = "Telefonnummer";
-            this.telefonnummerDataGridViewTextBoxColumn.HeaderText = "Telefonnummer";
-            this.telefonnummerDataGridViewTextBoxColumn.Name = "telefonnummerDataGridViewTextBoxColumn";
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            // 
-            // strasseDataGridViewTextBoxColumn
-            // 
-            this.strasseDataGridViewTextBoxColumn.DataPropertyName = "Strasse";
-            this.strasseDataGridViewTextBoxColumn.HeaderText = "Strasse";
-            this.strasseDataGridViewTextBoxColumn.Name = "strasseDataGridViewTextBoxColumn";
-            // 
-            // pLZDataGridViewTextBoxColumn
-            // 
-            this.pLZDataGridViewTextBoxColumn.DataPropertyName = "PLZ";
-            this.pLZDataGridViewTextBoxColumn.HeaderText = "PLZ";
-            this.pLZDataGridViewTextBoxColumn.Name = "pLZDataGridViewTextBoxColumn";
-            // 
-            // ortDataGridViewTextBoxColumn
-            // 
-            this.ortDataGridViewTextBoxColumn.DataPropertyName = "Ort";
-            this.ortDataGridViewTextBoxColumn.HeaderText = "Ort";
-            this.ortDataGridViewTextBoxColumn.Name = "ortDataGridViewTextBoxColumn";
-            // 
-            // landDataGridViewTextBoxColumn
-            // 
-            this.landDataGridViewTextBoxColumn.DataPropertyName = "Land";
-            this.landDataGridViewTextBoxColumn.HeaderText = "Land";
-            this.landDataGridViewTextBoxColumn.Name = "landDataGridViewTextBoxColumn";
-            // 
-            // geburtsdatumDataGridViewTextBoxColumn
-            // 
-            this.geburtsdatumDataGridViewTextBoxColumn.DataPropertyName = "Geburtsdatum";
-            this.geburtsdatumDataGridViewTextBoxColumn.HeaderText = "Geburtsdatum";
-            this.geburtsdatumDataGridViewTextBoxColumn.Name = "geburtsdatumDataGridViewTextBoxColumn";
-            // 
-            // sVNummerDataGridViewTextBoxColumn
-            // 
-            this.sVNummerDataGridViewTextBoxColumn.DataPropertyName = "SVNummer";
-            this.sVNummerDataGridViewTextBoxColumn.HeaderText = "SVNummer";
-            this.sVNummerDataGridViewTextBoxColumn.Name = "sVNummerDataGridViewTextBoxColumn";
-            // 
-            // passnummerDataGridViewTextBoxColumn
-            // 
-            this.passnummerDataGridViewTextBoxColumn.DataPropertyName = "Passnummer";
-            this.passnummerDataGridViewTextBoxColumn.HeaderText = "Passnummer";
-            this.passnummerDataGridViewTextBoxColumn.Name = "passnummerDataGridViewTextBoxColumn";
-            // 
-            // dataGridFahrerTable
-            // 
-            this.dataGridFahrerTable.AutoGenerateColumns = false;
-            this.dataGridFahrerTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridFahrerTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.fahrerIDDataGridViewTextBoxColumn,
-            this.personIDDataGridViewTextBoxColumn,
-            this.geburtsdatumDataGridViewTextBoxColumn1,
-            this.sVNummerDataGridViewTextBoxColumn1,
-            this.passNummerDataGridViewTextBoxColumn1});
-            this.dataGridFahrerTable.DataSource = this.fahrerBindingSource;
-            this.dataGridFahrerTable.Location = new System.Drawing.Point(7, 227);
-            this.dataGridFahrerTable.Name = "dataGridFahrerTable";
-            this.dataGridFahrerTable.Size = new System.Drawing.Size(846, 192);
-            this.dataGridFahrerTable.TabIndex = 4;
-            // 
-            // de2_uebung_fahrradkurierDataSet1
-            // 
-            this.de2_uebung_fahrradkurierDataSet1.DataSetName = "de2_uebung_fahrradkurierDataSet1";
-            this.de2_uebung_fahrradkurierDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // fahrerBindingSource
-            // 
-            this.fahrerBindingSource.DataMember = "Fahrer";
-            this.fahrerBindingSource.DataSource = this.de2_uebung_fahrradkurierDataSet1;
-            // 
             // fahrerTableAdapter
             // 
             this.fahrerTableAdapter.ClearBeforeFill = true;
             // 
-            // fahrerIDDataGridViewTextBoxColumn
+            // button1
             // 
-            this.fahrerIDDataGridViewTextBoxColumn.DataPropertyName = "Fahrer_ID";
-            this.fahrerIDDataGridViewTextBoxColumn.HeaderText = "Fahrer_ID";
-            this.fahrerIDDataGridViewTextBoxColumn.Name = "fahrerIDDataGridViewTextBoxColumn";
-            this.fahrerIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.button1.Location = new System.Drawing.Point(910, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(105, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Neuer Fahrer";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // personIDDataGridViewTextBoxColumn
+            // button2
             // 
-            this.personIDDataGridViewTextBoxColumn.DataPropertyName = "Person_ID";
-            this.personIDDataGridViewTextBoxColumn.HeaderText = "Person_ID";
-            this.personIDDataGridViewTextBoxColumn.Name = "personIDDataGridViewTextBoxColumn";
+            this.button2.Location = new System.Drawing.Point(910, 5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(105, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Neuer Fahrer";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // geburtsdatumDataGridViewTextBoxColumn1
+            // panel2
             // 
-            this.geburtsdatumDataGridViewTextBoxColumn1.DataPropertyName = "Geburtsdatum";
-            this.geburtsdatumDataGridViewTextBoxColumn1.HeaderText = "Geburtsdatum";
-            this.geburtsdatumDataGridViewTextBoxColumn1.Name = "geburtsdatumDataGridViewTextBoxColumn1";
+            this.panel2.BackColor = System.Drawing.Color.DimGray;
+            this.panel2.Controls.Add(this.buttonNeuerAuftrag);
+            this.panel2.Location = new System.Drawing.Point(3, 540);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1018, 31);
+            this.panel2.TabIndex = 3;
             // 
-            // sVNummerDataGridViewTextBoxColumn1
+            // buttonNeuerAuftrag
             // 
-            this.sVNummerDataGridViewTextBoxColumn1.DataPropertyName = "SVNummer";
-            this.sVNummerDataGridViewTextBoxColumn1.HeaderText = "SVNummer";
-            this.sVNummerDataGridViewTextBoxColumn1.Name = "sVNummerDataGridViewTextBoxColumn1";
+            this.buttonNeuerAuftrag.Location = new System.Drawing.Point(910, 5);
+            this.buttonNeuerAuftrag.Name = "buttonNeuerAuftrag";
+            this.buttonNeuerAuftrag.Size = new System.Drawing.Size(105, 23);
+            this.buttonNeuerAuftrag.TabIndex = 2;
+            this.buttonNeuerAuftrag.Text = "Neuer Auftrag";
+            this.buttonNeuerAuftrag.UseVisualStyleBackColor = true;
+            this.buttonNeuerAuftrag.Click += new System.EventHandler(this.buttonNeuerAuftrag_Click);
             // 
-            // passNummerDataGridViewTextBoxColumn1
+            // dataGridViewAuftraege
             // 
-            this.passNummerDataGridViewTextBoxColumn1.DataPropertyName = "PassNummer";
-            this.passNummerDataGridViewTextBoxColumn1.HeaderText = "PassNummer";
-            this.passNummerDataGridViewTextBoxColumn1.Name = "passNummerDataGridViewTextBoxColumn1";
+            this.dataGridViewAuftraege.AllowUserToAddRows = false;
+            this.dataGridViewAuftraege.AllowUserToDeleteRows = false;
+            this.dataGridViewAuftraege.AutoGenerateColumns = false;
+            this.dataGridViewAuftraege.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAuftraege.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.fahrerDataGridViewTextBoxColumn,
+            this.kundeDataGridViewTextBoxColumn,
+            this.statusDataGridViewTextBoxColumn,
+            this.kilometerDataGridViewTextBoxColumn,
+            this.datumDataGridViewTextBoxColumn,
+            this.gesamtgewichtDataGridViewTextBoxColumn,
+            this.startzeitDataGridViewTextBoxColumn,
+            this.endzeitDataGridViewTextBoxColumn});
+            this.dataGridViewAuftraege.DataSource = this.auftragUebersichtBindingSource;
+            this.dataGridViewAuftraege.Location = new System.Drawing.Point(7, 7);
+            this.dataGridViewAuftraege.Name = "dataGridViewAuftraege";
+            this.dataGridViewAuftraege.ReadOnly = true;
+            this.dataGridViewAuftraege.Size = new System.Drawing.Size(1011, 527);
+            this.dataGridViewAuftraege.TabIndex = 4;
+            // 
+            // de2uebungfahrradkurierDataSetBindingSource
+            // 
+            this.de2uebungfahrradkurierDataSetBindingSource.DataSource = this.de2_uebung_fahrradkurierDataSet;
+            this.de2uebungfahrradkurierDataSetBindingSource.Position = 0;
+            // 
+            // de2_uebung_fahrradkurierDataSet2
+            // 
+            this.de2_uebung_fahrradkurierDataSet2.DataSetName = "de2_uebung_fahrradkurierDataSet2";
+            this.de2_uebung_fahrradkurierDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // auftragUebersichtBindingSource
+            // 
+            this.auftragUebersichtBindingSource.DataMember = "AuftragUebersicht";
+            this.auftragUebersichtBindingSource.DataSource = this.de2_uebung_fahrradkurierDataSet2;
+            // 
+            // auftragUebersichtTableAdapter
+            // 
+            this.auftragUebersichtTableAdapter.ClearBeforeFill = true;
+            // 
+            // fahrerDataGridViewTextBoxColumn
+            // 
+            this.fahrerDataGridViewTextBoxColumn.DataPropertyName = "Fahrer";
+            this.fahrerDataGridViewTextBoxColumn.HeaderText = "Fahrer";
+            this.fahrerDataGridViewTextBoxColumn.Name = "fahrerDataGridViewTextBoxColumn";
+            this.fahrerDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // kundeDataGridViewTextBoxColumn
+            // 
+            this.kundeDataGridViewTextBoxColumn.DataPropertyName = "Kunde";
+            this.kundeDataGridViewTextBoxColumn.HeaderText = "Kunde";
+            this.kundeDataGridViewTextBoxColumn.Name = "kundeDataGridViewTextBoxColumn";
+            this.kundeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // kilometerDataGridViewTextBoxColumn
+            // 
+            this.kilometerDataGridViewTextBoxColumn.DataPropertyName = "Kilometer";
+            this.kilometerDataGridViewTextBoxColumn.HeaderText = "Kilometer";
+            this.kilometerDataGridViewTextBoxColumn.Name = "kilometerDataGridViewTextBoxColumn";
+            this.kilometerDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // datumDataGridViewTextBoxColumn
+            // 
+            this.datumDataGridViewTextBoxColumn.DataPropertyName = "Datum";
+            this.datumDataGridViewTextBoxColumn.HeaderText = "Datum";
+            this.datumDataGridViewTextBoxColumn.Name = "datumDataGridViewTextBoxColumn";
+            this.datumDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // gesamtgewichtDataGridViewTextBoxColumn
+            // 
+            this.gesamtgewichtDataGridViewTextBoxColumn.DataPropertyName = "Gesamtgewicht";
+            this.gesamtgewichtDataGridViewTextBoxColumn.HeaderText = "Gesamtgewicht";
+            this.gesamtgewichtDataGridViewTextBoxColumn.Name = "gesamtgewichtDataGridViewTextBoxColumn";
+            this.gesamtgewichtDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // startzeitDataGridViewTextBoxColumn
+            // 
+            this.startzeitDataGridViewTextBoxColumn.DataPropertyName = "Startzeit";
+            this.startzeitDataGridViewTextBoxColumn.HeaderText = "Startzeit";
+            this.startzeitDataGridViewTextBoxColumn.Name = "startzeitDataGridViewTextBoxColumn";
+            this.startzeitDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // endzeitDataGridViewTextBoxColumn
+            // 
+            this.endzeitDataGridViewTextBoxColumn.DataPropertyName = "Endzeit";
+            this.endzeitDataGridViewTextBoxColumn.HeaderText = "Endzeit";
+            this.endzeitDataGridViewTextBoxColumn.Name = "endzeitDataGridViewTextBoxColumn";
+            this.endzeitDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1062, 628);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(1059, 628);
+            this.Controls.Add(this.tabPanel);
             this.Name = "MainWindow";
             this.Text = "Fahrradkurier";
             this.Load += new System.EventHandler(this.MainWindow_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.tabPanel.ResumeLayout(false);
             this.tabFahrer.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridFahrer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fahrerAnzeigenBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridFahrerTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fahrerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFahrer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fahrerAnzeigenBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.tabAuftraege.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuftraege)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.de2uebungfahrradkurierDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.auftragUebersichtBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabPanel;
         private System.Windows.Forms.TabPage tabFahrer;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabAuftraege;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridFahrer;
+        private System.Windows.Forms.DataGridView dataGridViewFahrer;
         private System.Windows.Forms.Button buttonNewDriver;
         private de2_uebung_fahrradkurierDataSet de2_uebung_fahrradkurierDataSet;
         private System.Windows.Forms.BindingSource fahrerAnzeigenBindingSource;
@@ -337,15 +461,26 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn geburtsdatumDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sVNummerDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn passnummerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridView dataGridFahrerTable;
         private de2_uebung_fahrradkurierDataSet1 de2_uebung_fahrradkurierDataSet1;
         private System.Windows.Forms.BindingSource fahrerBindingSource;
         private DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet1TableAdapters.FahrerTableAdapter fahrerTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fahrerIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn personIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn geburtsdatumDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sVNummerDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passNummerDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridView dataGridViewAuftraege;
+        private System.Windows.Forms.BindingSource de2uebungfahrradkurierDataSetBindingSource;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button buttonNeuerAuftrag;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private de2_uebung_fahrradkurierDataSet2 de2_uebung_fahrradkurierDataSet2;
+        private System.Windows.Forms.BindingSource auftragUebersichtBindingSource;
+        private DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet2TableAdapters.AuftragUebersichtTableAdapter auftragUebersichtTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fahrerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kundeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kilometerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datumDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gesamtgewichtDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startzeitDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endzeitDataGridViewTextBoxColumn;
     }
 }
 

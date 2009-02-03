@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="de2_uebung_fahrradkurierDataSet2" targetNamespace="http://tempuri.org/de2_uebung_fahrradkurierDataSet2.xsd" xmlns:mstns="http://tempuri.org/de2_uebung_fahrradkurierDataSet2.xsd" xmlns="http://tempuri.org/de2_uebung_fahrradkurierDataSet2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="de2_uebung_fahrradkurierConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="de2_uebung_fahrradkurierConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DE2_UE_Fahrradkurier.Properties.Settings.GlobalReference.Default.de2_uebung_fahrradkurierConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AuftragUebersichtTableAdapter" GeneratorDataComponentClassName="AuftragUebersichtTableAdapter" Name="AuftragUebersicht" UserDataComponentName="AuftragUebersichtTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="de2_uebung_fahrradkurierConnectionString (Settings)" DbObjectName="de2_uebung_fahrradkurier.dbo.AuftragUebersicht" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Fahrer, Kunde, Status_ID, Kunde_ID, Fahrer_ID, Status, Kilometer, Datum, Gesamtgewicht, Startzeit, Endzeit FROM dbo.AuftragUebersicht</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Fahrer" DataSetColumn="Fahrer" />
+              <Mapping SourceColumn="Kunde" DataSetColumn="Kunde" />
+              <Mapping SourceColumn="Status_ID" DataSetColumn="Status_ID" />
+              <Mapping SourceColumn="Kunde_ID" DataSetColumn="Kunde_ID" />
+              <Mapping SourceColumn="Fahrer_ID" DataSetColumn="Fahrer_ID" />
+              <Mapping SourceColumn="Status" DataSetColumn="Status" />
+              <Mapping SourceColumn="Kilometer" DataSetColumn="Kilometer" />
+              <Mapping SourceColumn="Datum" DataSetColumn="Datum" />
+              <Mapping SourceColumn="Gesamtgewicht" DataSetColumn="Gesamtgewicht" />
+              <Mapping SourceColumn="Startzeit" DataSetColumn="Startzeit" />
+              <Mapping SourceColumn="Endzeit" DataSetColumn="Endzeit" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="de2_uebung_fahrradkurierDataSet2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="de2_uebung_fahrradkurierDataSet2" msprop:Generator_UserDSName="de2_uebung_fahrradkurierDataSet2" msprop:EnableTableAdapterManager="True">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AuftragUebersicht" msprop:Generator_UserTableName="AuftragUebersicht" msprop:Generator_RowDeletedName="AuftragUebersichtRowDeleted" msprop:Generator_TableClassName="AuftragUebersichtDataTable" msprop:Generator_RowChangedName="AuftragUebersichtRowChanged" msprop:Generator_RowClassName="AuftragUebersichtRow" msprop:Generator_RowChangingName="AuftragUebersichtRowChanging" msprop:Generator_RowEvArgName="AuftragUebersichtRowChangeEvent" msprop:Generator_RowEvHandlerName="AuftragUebersichtRowChangeEventHandler" msprop:Generator_TablePropName="AuftragUebersicht" msprop:Generator_TableVarName="tableAuftragUebersicht" msprop:Generator_RowDeletingName="AuftragUebersichtRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Fahrer" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Fahrer" msprop:Generator_ColumnPropNameInRow="Fahrer" msprop:Generator_ColumnVarNameInTable="columnFahrer" msprop:Generator_ColumnPropNameInTable="FahrerColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="61" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Kunde" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Kunde" msprop:Generator_ColumnPropNameInRow="Kunde" msprop:Generator_ColumnVarNameInTable="columnKunde" msprop:Generator_ColumnPropNameInTable="KundeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="61" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Status_ID" msprop:Generator_UserColumnName="Status_ID" msprop:Generator_ColumnPropNameInRow="Status_ID" msprop:Generator_ColumnVarNameInTable="columnStatus_ID" msprop:Generator_ColumnPropNameInTable="Status_IDColumn" type="xs:int" />
+              <xs:element name="Kunde_ID" msprop:Generator_UserColumnName="Kunde_ID" msprop:Generator_ColumnPropNameInRow="Kunde_ID" msprop:Generator_ColumnVarNameInTable="columnKunde_ID" msprop:Generator_ColumnPropNameInTable="Kunde_IDColumn" type="xs:int" />
+              <xs:element name="Fahrer_ID" msprop:Generator_UserColumnName="Fahrer_ID" msprop:Generator_ColumnPropNameInRow="Fahrer_ID" msprop:Generator_ColumnVarNameInTable="columnFahrer_ID" msprop:Generator_ColumnPropNameInTable="Fahrer_IDColumn" type="xs:int" />
+              <xs:element name="Status" msprop:Generator_UserColumnName="Status" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInTable="StatusColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Kilometer" msprop:Generator_UserColumnName="Kilometer" msprop:Generator_ColumnPropNameInRow="Kilometer" msprop:Generator_ColumnVarNameInTable="columnKilometer" msprop:Generator_ColumnPropNameInTable="KilometerColumn" type="xs:decimal" />
+              <xs:element name="Datum" msprop:Generator_UserColumnName="Datum" msprop:Generator_ColumnPropNameInRow="Datum" msprop:Generator_ColumnVarNameInTable="columnDatum" msprop:Generator_ColumnPropNameInTable="DatumColumn" type="xs:dateTime" />
+              <xs:element name="Gesamtgewicht" msprop:Generator_UserColumnName="Gesamtgewicht" msprop:Generator_ColumnPropNameInRow="Gesamtgewicht" msprop:Generator_ColumnVarNameInTable="columnGesamtgewicht" msprop:Generator_ColumnPropNameInTable="GesamtgewichtColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Startzeit" msprop:Generator_UserColumnName="Startzeit" msprop:Generator_ColumnPropNameInRow="Startzeit" msprop:Generator_ColumnVarNameInTable="columnStartzeit" msprop:Generator_ColumnPropNameInTable="StartzeitColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Endzeit" msprop:Generator_UserColumnName="Endzeit" msprop:Generator_ColumnPropNameInRow="Endzeit" msprop:Generator_ColumnVarNameInTable="columnEndzeit" msprop:Generator_ColumnPropNameInTable="EndzeitColumn" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -259,7 +259,7 @@ create index Orte_Ortsname on Orte(Ortsname)
 go
 
 /* Gesamtgewichtberechnung */
-alter trigger AuftragGesamtgewicht
+create trigger AuftragGesamtgewicht
 on Pakete
 for insert, delete, update as
 update Auftraege
@@ -418,113 +418,128 @@ group by year(a.datum),month(a.datum) ,p.nachname, p.Vorname, f.fahrer_ID*/
 where fahrer_ID = 1001*/
 
 create view FahrerAnzeigen as
-select
-	p.Anrede,
-	p.Vorname,
-	p.Nachname,
-	p.Telefonnummer,
-	p.Email,
-	a.Strasse,
-	o.PLZ,
-	o.Ortsname as Ort,
-	o.Land,
-	f.Geburtsdatum,
-	f.SVNummer,
-	f.Passnummer
-from fahrer f
-inner join personen p on p.person_ID = f.person_ID
-inner join person_adresse pa on p.person_id = pa.person_id
-inner join adressen a on a.adresse_id = pa.adresse_id
-inner join orte o on a.ort_id = o.ort_id
+	select
+		f.Fahrer_ID,
+		p.Anrede,
+		p.Vorname,
+		p.Nachname,
+		p.Telefonnummer,
+		p.Email,
+		a.Strasse,
+		o.PLZ,
+		o.Ortsname as Ort,
+		o.Land,
+		f.Geburtsdatum,
+		f.SVNummer,
+		f.Passnummer
+	from fahrer f
+	inner join personen p on p.person_ID = f.person_ID
+	inner join person_adresse pa on p.person_id = pa.person_id
+	inner join adressen a on a.adresse_id = pa.adresse_id
+	inner join orte o on a.ort_id = o.ort_id
+
+go
 
 create view KundenAnzeigen as
-select
-	p.Anrede,
-	p.Vorname,
-	p.Nachname,
-	p.Telefonnummer,
-	p.Email,
-	a.Strasse,
-	o.PLZ,
-	o.Ortsname as Ort,
-	o.Land,
-	k.Firma,
-	k.KreditkartenNummer,
-	k.KreditkartenPZ,
-	k.Premiumkunde
-from kunden k
-inner join personen p on p.person_ID = k.person_ID
-inner join person_adresse pa on p.person_id = pa.person_id
-inner join adressen a on a.adresse_id = pa.adresse_id
-inner join orte o on a.ort_id = o.ort_id
+	select
+		k.Kunde_ID,
+		p.Anrede,
+		p.Vorname,
+		p.Nachname,
+		p.Telefonnummer,
+		p.Email,
+		a.Strasse,
+		o.PLZ,
+		o.Ortsname as Ort,
+		o.Land,
+		k.Firma,
+		k.KreditkartenNummer,
+		k.KreditkartenPZ,
+		k.Premiumkunde
+	from kunden k
+	inner join personen p on p.person_ID = k.person_ID
+	inner join person_adresse pa on p.person_id = pa.person_id
+	inner join adressen a on a.adresse_id = pa.adresse_id
+	inner join orte o on a.ort_id = o.ort_id
 
-
+go
 
 /*Diese Abfrage liefert die Anzahl und die Statusanzeige der Aufträge */
 create view StatusUebersicht as
-select statustitel as Status, count(auftrag_ID) as Anzahl from Auftraege as a
-inner join kunden as k on a.kunde_ID = k.kunde_ID
-inner join status as s on a.status_ID = s.status_ID
-group by  statustitel
+	select statustitel as Status, count(auftrag_ID) as Anzahl from Auftraege as a
+	inner join kunden as k on a.kunde_ID = k.kunde_ID
+	inner join status as s on a.status_ID = s.status_ID
+	group by  statustitel
 
+go
 
 /*Ausgabe der Ist-Einsatzistzeit eines Fahrers zur weiteren Verrechnung*/
 create view IstEinsatzzeit as
-select f.fahrer_ID as 'ID Fahrer', year(datum) as 'Jahr' ,month(datum) as 'Monat' ,
-p.nachname as 'Name', p.Vorname as 'Vorname', 
-sum(datediff(hour ,b.startzeit, b.endzeit)) as 'Istzeit in h/Monat' 
-from bereitschaftszeiten as b
-inner join fahrer as f on b.fahrer_ID = f.fahrer_ID
-inner join personen as p on p.person_ID = f.person_ID
-group by year(datum),month(datum) ,p.nachname, p.Vorname, f.fahrer_ID
+	select f.fahrer_ID as 'ID Fahrer', year(datum) as 'Jahr' ,month(datum) as 'Monat' ,
+	p.nachname as 'Name', p.Vorname as 'Vorname', 
+	sum(datediff(hour ,b.startzeit, b.endzeit)) as 'Istzeit in h/Monat' 
+	from bereitschaftszeiten as b
+	inner join fahrer as f on b.fahrer_ID = f.fahrer_ID
+	inner join personen as p on p.person_ID = f.person_ID
+	group by year(datum),month(datum) ,p.nachname, p.Vorname, f.fahrer_ID
 
+go
 
-create view Lohnhilfe as 
-select a.fahrer_ID as Fahrer_ID, p.Vorname, p.Nachname, year(a.datum) as Jahr, month(a.datum) as Monat,
-sum(datediff(hour ,b.startzeit, b.endzeit)) as Bereitschaftszeit, 
-sum(gesamtgewicht)/1000 as Kilo, 
-sum(kilometer) as Gesamtfahrstrecke
-from bereitschaftszeiten as b
-inner join auftraege as a on a.fahrer_ID = b.fahrer_ID
-inner join fahrer as f on a.fahrer_ID = f.fahrer_ID
-inner join personen as p on f.person_ID = p.person_ID
-where b.datum <= a.datum and b.datum >= a.datum
--- Transportzeit + Triger überprüfen
-group by year(a.datum),month(a.datum), a.fahrer_ID, p.Vorname, p.Nachname
+create view Lohnhilfe as
+	select a.fahrer_ID as Fahrer_ID, p.Vorname, p.Nachname, year(a.datum) as Jahr, month(a.datum) as Monat,
+	sum(datediff(hour ,b.startzeit, b.endzeit)) as Bereitschaftszeit, 
+	sum(gesamtgewicht)/1000 as Kilo, 
+	sum(kilometer) as Gesamtfahrstrecke
+	from bereitschaftszeiten as b
+	inner join auftraege as a on a.fahrer_ID = b.fahrer_ID
+	inner join fahrer as f on a.fahrer_ID = f.fahrer_ID
+	inner join personen as p on f.person_ID = p.person_ID
+	where b.datum <= a.datum and b.datum >= a.datum
+	-- Transportzeit + Trigger überprüfen
+	group by year(a.datum),month(a.datum), a.fahrer_ID, p.Vorname, p.Nachname
+
+go
 
 create view Lohn as
-select Fahrer_ID, Vorname, Nachname, Jahr, Monat,
-sum((Gesamtfahrstrecke * Kilo * 0.1) + (Bereitschaftszeit*20)) as Lohn
-from Lohnhilfe
-group by Jahr, Monat, Fahrer_ID, Vorname, Nachname
+	select Fahrer_ID, Vorname, Nachname, Jahr, Monat,
+	sum((Gesamtfahrstrecke * Kilo * 0.1) + (Bereitschaftszeit*20)) as Lohn
+	from Lohnhilfe
+	group by Jahr, Monat, Fahrer_ID, Vorname, Nachname
 
-select view AuftragUebersicht as
-select
-	fp.Vorname + ' ' + fp.Nachname as Fahrer,
-	kp.Vorname + ' ' + kp.Nachname as Kunde,
-    a.Status_ID,
-	a.Kunde_ID,
-	a.Fahrer_ID,
-	s.Statustitel as Status,
-	a.Kilometer,
-	a.Datum,
-    a.Gesamtgewicht,
-	a.Startzeit,
-	a.Endzeit
-from Auftraege a
-inner join Fahrer f on a.Fahrer_ID = f.Fahrer_ID
-inner join Kunden k on a.Kunde_ID = k.Kunde_ID
-inner join Personen fp on fp.Person_ID = f.Person_ID
-inner join Personen kp on kp.Person_ID = k.Person_ID
-inner join Status s on s.Status_ID = a.Status_ID
+go
+
+create view AuftragUebersicht as
+	select
+		fp.Vorname + ' ' + fp.Nachname as Fahrer,
+		kp.Vorname + ' ' + kp.Nachname as Kunde,
+		a.Status_ID,
+		a.Kunde_ID,
+		a.Fahrer_ID,
+		s.Statustitel as Status,
+		a.Kilometer,
+		a.Datum,
+		(select count(p.Paket_ID) from Pakete p where p.Auftrag_ID = a.Auftrag_ID) as Pakete,
+		a.Gesamtgewicht,
+		a.Startzeit,
+		a.Endzeit
+	from Auftraege a
+	inner join Fahrer f on a.Fahrer_ID = f.Fahrer_ID
+	inner join Kunden k on a.Kunde_ID = k.Kunde_ID
+	inner join Personen fp on fp.Person_ID = f.Person_ID
+	inner join Personen kp on kp.Person_ID = k.Person_ID
+	inner join Status s on s.Status_ID = a.Status_ID
+
+go
 
 create view UmsatzProKunde as
-select a.kunde_ID as Kunde_ID, p.Vorname, p.Nachname,
-sum((Gesamtgewicht/1000) * Kilometer * 0.5) as Umsatz
-from auftraege a
-inner join kunden as k on k.kunde_ID = a.kunde_ID
-inner join personen as p on k.person_ID = p.person_ID
-group by a.Kunde_ID, p.Vorname, p.Nachname
+	select a.kunde_ID as Kunde_ID, p.Vorname, p.Nachname,
+	sum((Gesamtgewicht/1000) * Kilometer * 0.5) as Umsatz
+	from auftraege a
+	inner join kunden as k on k.kunde_ID = a.kunde_ID
+	inner join personen as p on k.person_ID = p.person_ID
+	group by a.Kunde_ID, p.Vorname, p.Nachname
+
+go
 
 --
 
@@ -537,6 +552,8 @@ begin
 	where Auftrag_ID = @Auftrag_ID
 end
 
+go
+
 create proc AuftraegeProKunde
 	@Kunde_ID int
 as
@@ -544,12 +561,16 @@ begin
 	select * from AuftragUebersicht where Kunde_ID = @Kunde_ID
 end
 
+go
+
 create proc AuftragNachStatusID
 	@s int
 as
 begin
 	select * from AuftragUebersicht where Status_ID = @s
 end
+
+go
 
 create proc NeuerFahrer
 	@Anrede varchar(20),
@@ -610,6 +631,8 @@ begin
 	select @Fahrer_ID = @@identity
 	return @Fahrer_ID
 end
+
+go
 
 create proc NeuerKunde
 	@Anrede varchar(20),
@@ -672,8 +695,9 @@ begin
 	return @Kunde_ID
 end
 
+go
 
-alter proc NeuerAuftrag
+create proc NeuerAuftrag
 	@Fahrer_ID int,
 	@Kunde_ID int, 
 	@Statustitel varchar(20),
@@ -742,6 +766,8 @@ begin
 	return @Auftrag_ID
 end
 
+go
+
 create proc NeuesPaket
 	@Auftrag_ID int,
 	@Titel varchar(40), 
@@ -757,6 +783,8 @@ begin
 
 	return @@identity
 end
+
+go
 
 create proc AuftragStarten
 	@Auftrag_ID int,
@@ -779,6 +807,8 @@ begin
 
 	update Auftraege set Startzeit=getdate(), Status_ID=@Status_ID where Auftrag_ID=@Auftrag_ID
 end 
+
+go
 
 create proc AuftragStoppen
 	@Auftrag_ID int,
@@ -838,7 +868,7 @@ grant select, insert, delete, update on Orte to buero
 grant select, insert, delete, update on Pakete to buero
 grant select, insert, delete, update on Person_Adresse to buero
 grant select, insert, delete, update on Personen to buero
-grant select, insert, delete, update on Stauts to buero
+grant select, insert, delete, update on Status to buero
 
 grant select on AuftragUebersicht to buero
 grant select on FahrerAnzeigen to buero
@@ -861,31 +891,28 @@ grant execute on AuftragRechnung to buero
 --------------------------------------------------------
 -- Fahrer
 
-grant select on Auftrage to fahrer
+grant select on Auftraege to fahrer
 grant select on Bereitschaftszeiten to fahrer
 grant select on Pakete to fahrer
 grant select on Status to fahrer
 grant select on Adressen to fahrer
 grant select on Orte to fahrer
 
-
 grant select on IstEinsatzzeit to fahrer
 grant select on StatusUebersicht to fahrer
-grant select on AuftraegeProKunde to fahrer
 grant select on IstEinsatzzeit to fahrer
-grant select on AuftraegeProKunde to fahrer
 grant select on Lohn to fahrer
+
+grant execute on AuftraegeProKunde to fahrer
 ---------------------------------------------------------------
 --Kunde
 
-grant select on AuftraegeProKunde to kunde
+grant execute on AuftraegeProKunde to kunde
 grant select on KundenAnzeigen to kunde 
-grant select on Pakete on kunde
+grant select on Pakete to kunde
 grant select on StatusUebersicht to kunde
-grant select on AuftraegeProKunde to kunde
 grant select on UmsatzProKunde to kunde
-grant select on AuftraegeProKunde to kunde
-grant select on AuftragRechnung to kunde
+grant execute on AuftragRechnung to kunde
 
 
 
