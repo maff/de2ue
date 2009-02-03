@@ -142,7 +142,7 @@
             this.fahrerComboBox.Location = new System.Drawing.Point(97, 7);
             this.fahrerComboBox.Name = "fahrerComboBox";
             this.fahrerComboBox.Size = new System.Drawing.Size(201, 21);
-            this.fahrerComboBox.TabIndex = 51;
+            this.fahrerComboBox.TabIndex = 1;
             // 
             // buttonCancel
             // 
@@ -150,7 +150,7 @@
             this.buttonCancel.Location = new System.Drawing.Point(142, 218);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 49;
+            this.buttonCancel.TabIndex = 10;
             this.buttonCancel.Text = "Abbrechen";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -160,7 +160,7 @@
             this.buttonSave.Location = new System.Drawing.Point(223, 218);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 48;
+            this.buttonSave.TabIndex = 9;
             this.buttonSave.Text = "Speichern";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -170,28 +170,28 @@
             this.landTextBox.Location = new System.Drawing.Point(97, 192);
             this.landTextBox.Name = "landTextBox";
             this.landTextBox.Size = new System.Drawing.Size(201, 20);
-            this.landTextBox.TabIndex = 43;
+            this.landTextBox.TabIndex = 8;
             // 
             // ortTextBox
             // 
             this.ortTextBox.Location = new System.Drawing.Point(97, 166);
             this.ortTextBox.Name = "ortTextBox";
             this.ortTextBox.Size = new System.Drawing.Size(201, 20);
-            this.ortTextBox.TabIndex = 40;
+            this.ortTextBox.TabIndex = 7;
             // 
             // PLZTextBox
             // 
             this.PLZTextBox.Location = new System.Drawing.Point(97, 140);
             this.PLZTextBox.Name = "PLZTextBox";
             this.PLZTextBox.Size = new System.Drawing.Size(201, 20);
-            this.PLZTextBox.TabIndex = 38;
+            this.PLZTextBox.TabIndex = 6;
             // 
             // strasseTextBox
             // 
             this.strasseTextBox.Location = new System.Drawing.Point(97, 114);
             this.strasseTextBox.Name = "strasseTextBox";
             this.strasseTextBox.Size = new System.Drawing.Size(201, 20);
-            this.strasseTextBox.TabIndex = 36;
+            this.strasseTextBox.TabIndex = 5;
             // 
             // kundeComboBox
             // 
@@ -199,7 +199,7 @@
             this.kundeComboBox.Location = new System.Drawing.Point(97, 34);
             this.kundeComboBox.Name = "kundeComboBox";
             this.kundeComboBox.Size = new System.Drawing.Size(201, 21);
-            this.kundeComboBox.TabIndex = 51;
+            this.kundeComboBox.TabIndex = 2;
             // 
             // statusComboBox
             // 
@@ -207,14 +207,14 @@
             this.statusComboBox.Location = new System.Drawing.Point(97, 61);
             this.statusComboBox.Name = "statusComboBox";
             this.statusComboBox.Size = new System.Drawing.Size(201, 21);
-            this.statusComboBox.TabIndex = 51;
+            this.statusComboBox.TabIndex = 3;
             // 
             // kilometerTextBox
             // 
             this.kilometerTextBox.Location = new System.Drawing.Point(97, 88);
             this.kilometerTextBox.Name = "kilometerTextBox";
             this.kilometerTextBox.Size = new System.Drawing.Size(201, 20);
-            this.kilometerTextBox.TabIndex = 36;
+            this.kilometerTextBox.TabIndex = 4;
             // 
             // Auftrag
             // 
@@ -240,6 +240,7 @@
             this.Controls.Add(labelKunde);
             this.Controls.Add(fahrerLabel);
             this.Name = "Auftrag";
+            this.ShowIcon = false;
             this.Text = "Auftrag";
             this.Load += new System.EventHandler(this.Auftrag_Load);
             this.ResumeLayout(false);

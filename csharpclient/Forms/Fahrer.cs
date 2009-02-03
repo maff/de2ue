@@ -22,6 +22,7 @@ namespace DE2_UE_Fahrradkurier
 
         private void Fahrer_Load(object sender, EventArgs e)
         {
+            this.anredeComboBox.SelectedIndex = 0;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)

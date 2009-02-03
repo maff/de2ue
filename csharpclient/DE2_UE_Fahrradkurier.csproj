@@ -67,17 +67,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>de2_uebung_fahrradkurierDataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="de2_uebung_fahrradkurierDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>de2_uebung_fahrradkurierDataSet3.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Auftrag.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Auftrag.Designer.cs">
       <DependentUpon>Auftrag.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AuftragStartStop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuftragStartStop.Designer.cs">
+      <DependentUpon>AuftragStartStop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Fahrer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Fahrer.Designer.cs">
       <DependentUpon>Fahrer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Paket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Paket.Designer.cs">
+      <DependentUpon>Paket.cs</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
@@ -91,8 +108,16 @@
       <DependentUpon>Auftrag.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AuftragStartStop.resx">
+      <DependentUpon>AuftragStartStop.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Fahrer.resx">
       <DependentUpon>Fahrer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Paket.resx">
+      <DependentUpon>Paket.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
@@ -141,6 +166,17 @@
     </None>
     <None Include="de2_uebung_fahrradkurierDataSet2.xss">
       <DependentUpon>de2_uebung_fahrradkurierDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="de2_uebung_fahrradkurierDataSet3.xsc">
+      <DependentUpon>de2_uebung_fahrradkurierDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="de2_uebung_fahrradkurierDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>de2_uebung_fahrradkurierDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="de2_uebung_fahrradkurierDataSet3.xss">
+      <DependentUpon>de2_uebung_fahrradkurierDataSet3.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -44,6 +44,8 @@ namespace DE2_UE_Fahrradkurier
                 {
                     box.Items.Add(new ComboBoxItem(int.Parse(reader[0].ToString()), reader["Vorname"] + " " + reader["Nachname"]));
                 }
+
+                box.SelectedIndex = 0;
             }
             this.connection.Close();
         }
@@ -59,8 +61,10 @@ namespace DE2_UE_Fahrradkurier
             {
                 while (reader.Read())
                 {
-                   this.statusComboBox.Items.Add(new ComboBoxItem(int.Parse(reader[0].ToString()), reader["Statustitel"].ToString()));
+                   this.statusComboBox.Items.Add(reader["Statustitel"].ToString());
                 }
+
+                this.statusComboBox.SelectedIndex = 0;
             }
             this.connection.Close();
         }
@@ -71,16 +75,25 @@ namespace DE2_UE_Fahrradkurier
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (fahrerComboBox.SelectedItem.ToString() == "" ||
-                kundeComboBox.SelectedItem.ToString() == "" ||
-                statusComboBox.SelectedItem.ToString() == "")
-            {
-                return;
-            }
-            else
-            {
-                MessageBox.Show("ok");
-            }
+            this.connection.Open();
+            SqlCommand command = new SqlCommand("NeuerAuftrag", this.connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            ComboBoxItem fahrer = (ComboBoxItem)this.fahrerComboBox.SelectedItem;
+            ComboBoxItem kunde = (ComboBoxItem)this.kundeComboBox.SelectedItem;
+
+            command.Parameters.Add(new SqlParameter("@Fahrer_ID", (SqlInt32)fahrer.Key));
+            command.Parameters.Add(new SqlParameter("@Kunde_ID", (SqlInt32)kunde.Key));
+            command.Parameters.Add(new SqlParameter("@Statustitel", (SqlString)this.statusComboBox.Text));
+            command.Parameters.Add(new SqlParameter("@Kilometer", (SqlDecimal)double.Parse(this.kilometerTextBox.Text)));
+            command.Parameters.Add(new SqlParameter("@Strasse", (SqlString)this.strasseTextBox.Text));
+            command.Parameters.Add(new SqlParameter("@PLZ", (SqlString)this.PLZTextBox.Text));
+            command.Parameters.Add(new SqlParameter("@Ort", (SqlString)this.ortTextBox.Text));
+            command.Parameters.Add(new SqlParameter("@Land", (SqlString)this.landTextBox.Text));
+
+            command.ExecuteNonQuery();
+            this.connection.Close();
+            this.Close();
         }
 
 

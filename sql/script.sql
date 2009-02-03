@@ -510,11 +510,16 @@ go
 
 create view AuftragUebersicht as
 	select
-		fp.Vorname + ' ' + fp.Nachname as Fahrer,
-		kp.Vorname + ' ' + kp.Nachname as Kunde,
+		a.Auftrag_ID,
 		a.Status_ID,
 		a.Kunde_ID,
 		a.Fahrer_ID,
+		fp.Vorname + ' ' + fp.Nachname as Fahrer,
+		kp.Vorname + ' ' + kp.Nachname as Kunde,
+		ad.Strasse,
+		o.PLZ,
+		o.Ortsname as Ort,
+		o.Land,
 		s.Statustitel as Status,
 		a.Kilometer,
 		a.Datum,
@@ -528,6 +533,9 @@ create view AuftragUebersicht as
 	inner join Personen fp on fp.Person_ID = f.Person_ID
 	inner join Personen kp on kp.Person_ID = k.Person_ID
 	inner join Status s on s.Status_ID = a.Status_ID
+	inner join Auftrag_Adresse aad on aad.Auftrag_ID = a.Auftrag_ID
+	inner join Adressen ad on aad.Adresse_ID = ad.Adresse_ID
+	inner join Orte o on ad.Ort_ID = o.Ort_ID
 
 go
 
@@ -538,6 +546,11 @@ create view UmsatzProKunde as
 	inner join kunden as k on k.kunde_ID = a.kunde_ID
 	inner join personen as p on k.person_ID = p.person_ID
 	group by a.Kunde_ID, p.Vorname, p.Nachname
+
+go
+
+create view PaketUebersicht as 
+	select Paket_ID, Auftrag_ID, Titel, Hoehe, Breite, Tiefe, Gewicht, Fragile from pakete
 
 go
 
@@ -831,6 +844,18 @@ begin
 
 	update Auftraege set Endzeit=getdate(), Status_ID=@Status_ID where Auftrag_ID=@Auftrag_ID
 end 
+
+create proc NeueBereitschaftszeit
+	@Fahrer_ID int,
+	@Datum DateTime,
+	@Startzeit DateTime,
+	@Endzeit DateTime
+as
+begin
+	insert into Bereitschaftszeiten (Fahrer_ID, Datum, Startzeit, Endzeit)
+		values
+		(@Fahrer_ID, @Datum, @Startzeit, @Endzeit)
+end
 
 /* Permissions */
 

@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.tabPanel = new System.Windows.Forms.TabControl();
             this.tabFahrer = new System.Windows.Forms.TabPage();
-            this.fahrerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.de2_uebung_fahrradkurierDataSet1 = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet1();
             this.dataGridViewFahrer = new System.Windows.Forms.DataGridView();
             this.anredeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vornameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,39 +49,55 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonNewDriver = new System.Windows.Forms.Button();
             this.tabAuftraege = new System.Windows.Forms.TabPage();
+            this.dataGridViewAuftraege = new System.Windows.Forms.DataGridView();
+            this.Auftrag_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fahrerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kundeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Strasse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PLZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ort = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Land = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kilometerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paketeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gesamtgewichtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startzeitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endzeitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.auftragUebersichtBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.de2_uebung_fahrradkurierDataSet3 = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet3();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonAuftragStarten = new System.Windows.Forms.Button();
+            this.buttonAuftragstoppen = new System.Windows.Forms.Button();
+            this.buttonPakete = new System.Windows.Forms.Button();
+            this.buttonNeuerAuftrag = new System.Windows.Forms.Button();
+            this.auftragUebersichtBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.de2_uebung_fahrradkurierDataSet2 = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet2();
+            this.fahrerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.de2_uebung_fahrradkurierDataSet1 = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet1();
             this.fahrerAnzeigenTableAdapter = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSetTableAdapters.FahrerAnzeigenTableAdapter();
             this.fahrerTableAdapter = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet1TableAdapters.FahrerTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonNeuerAuftrag = new System.Windows.Forms.Button();
-            this.dataGridViewAuftraege = new System.Windows.Forms.DataGridView();
             this.de2uebungfahrradkurierDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.de2_uebung_fahrradkurierDataSet2 = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet2();
-            this.auftragUebersichtBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.auftragUebersichtTableAdapter = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet2TableAdapters.AuftragUebersichtTableAdapter();
-            this.fahrerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kundeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kilometerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gesamtgewichtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startzeitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endzeitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.auftragUebersichtTableAdapter1 = new DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet3TableAdapters.AuftragUebersichtTableAdapter();
             this.tabPanel.SuspendLayout();
             this.tabFahrer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fahrerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFahrer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fahrerAnzeigenBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabAuftraege.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuftraege)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.de2uebungfahrradkurierDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.auftragUebersichtBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet3)).BeginInit();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.auftragUebersichtBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fahrerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.de2uebungfahrradkurierDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPanel
@@ -107,16 +121,6 @@
             this.tabFahrer.TabIndex = 0;
             this.tabFahrer.Text = "Fahrer";
             this.tabFahrer.UseVisualStyleBackColor = true;
-            // 
-            // fahrerBindingSource
-            // 
-            this.fahrerBindingSource.DataMember = "Fahrer";
-            this.fahrerBindingSource.DataSource = this.de2_uebung_fahrradkurierDataSet1;
-            // 
-            // de2_uebung_fahrradkurierDataSet1
-            // 
-            this.de2_uebung_fahrradkurierDataSet1.DataSetName = "de2_uebung_fahrradkurierDataSet1";
-            this.de2_uebung_fahrradkurierDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dataGridViewFahrer
             // 
@@ -269,6 +273,214 @@
             this.tabAuftraege.Text = "Aufträge";
             this.tabAuftraege.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewAuftraege
+            // 
+            this.dataGridViewAuftraege.AllowUserToAddRows = false;
+            this.dataGridViewAuftraege.AllowUserToDeleteRows = false;
+            this.dataGridViewAuftraege.AutoGenerateColumns = false;
+            this.dataGridViewAuftraege.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAuftraege.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Auftrag_ID,
+            this.statusDataGridViewTextBoxColumn,
+            this.fahrerDataGridViewTextBoxColumn,
+            this.kundeDataGridViewTextBoxColumn,
+            this.Strasse,
+            this.PLZ,
+            this.Ort,
+            this.Land,
+            this.kilometerDataGridViewTextBoxColumn,
+            this.datumDataGridViewTextBoxColumn,
+            this.paketeDataGridViewTextBoxColumn,
+            this.gesamtgewichtDataGridViewTextBoxColumn,
+            this.startzeitDataGridViewTextBoxColumn,
+            this.endzeitDataGridViewTextBoxColumn});
+            this.dataGridViewAuftraege.DataSource = this.auftragUebersichtBindingSource1;
+            this.dataGridViewAuftraege.Location = new System.Drawing.Point(6, 6);
+            this.dataGridViewAuftraege.Name = "dataGridViewAuftraege";
+            this.dataGridViewAuftraege.ReadOnly = true;
+            this.dataGridViewAuftraege.Size = new System.Drawing.Size(1020, 528);
+            this.dataGridViewAuftraege.TabIndex = 4;
+            // 
+            // Auftrag_ID
+            // 
+            this.Auftrag_ID.DataPropertyName = "Auftrag_ID";
+            this.Auftrag_ID.HeaderText = "Auftrag_ID";
+            this.Auftrag_ID.Name = "Auftrag_ID";
+            this.Auftrag_ID.ReadOnly = true;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fahrerDataGridViewTextBoxColumn
+            // 
+            this.fahrerDataGridViewTextBoxColumn.DataPropertyName = "Fahrer";
+            this.fahrerDataGridViewTextBoxColumn.HeaderText = "Fahrer";
+            this.fahrerDataGridViewTextBoxColumn.Name = "fahrerDataGridViewTextBoxColumn";
+            this.fahrerDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // kundeDataGridViewTextBoxColumn
+            // 
+            this.kundeDataGridViewTextBoxColumn.DataPropertyName = "Kunde";
+            this.kundeDataGridViewTextBoxColumn.HeaderText = "Kunde";
+            this.kundeDataGridViewTextBoxColumn.Name = "kundeDataGridViewTextBoxColumn";
+            this.kundeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Strasse
+            // 
+            this.Strasse.DataPropertyName = "Strasse";
+            this.Strasse.HeaderText = "Strasse";
+            this.Strasse.Name = "Strasse";
+            this.Strasse.ReadOnly = true;
+            // 
+            // PLZ
+            // 
+            this.PLZ.DataPropertyName = "PLZ";
+            this.PLZ.HeaderText = "PLZ";
+            this.PLZ.Name = "PLZ";
+            this.PLZ.ReadOnly = true;
+            // 
+            // Ort
+            // 
+            this.Ort.DataPropertyName = "Ort";
+            this.Ort.HeaderText = "Ort";
+            this.Ort.Name = "Ort";
+            this.Ort.ReadOnly = true;
+            // 
+            // Land
+            // 
+            this.Land.DataPropertyName = "Land";
+            this.Land.HeaderText = "Land";
+            this.Land.Name = "Land";
+            this.Land.ReadOnly = true;
+            // 
+            // kilometerDataGridViewTextBoxColumn
+            // 
+            this.kilometerDataGridViewTextBoxColumn.DataPropertyName = "Kilometer";
+            this.kilometerDataGridViewTextBoxColumn.HeaderText = "Kilometer";
+            this.kilometerDataGridViewTextBoxColumn.Name = "kilometerDataGridViewTextBoxColumn";
+            this.kilometerDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // datumDataGridViewTextBoxColumn
+            // 
+            this.datumDataGridViewTextBoxColumn.DataPropertyName = "Datum";
+            this.datumDataGridViewTextBoxColumn.HeaderText = "Datum";
+            this.datumDataGridViewTextBoxColumn.Name = "datumDataGridViewTextBoxColumn";
+            this.datumDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // paketeDataGridViewTextBoxColumn
+            // 
+            this.paketeDataGridViewTextBoxColumn.DataPropertyName = "Pakete";
+            this.paketeDataGridViewTextBoxColumn.HeaderText = "Pakete";
+            this.paketeDataGridViewTextBoxColumn.Name = "paketeDataGridViewTextBoxColumn";
+            this.paketeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // gesamtgewichtDataGridViewTextBoxColumn
+            // 
+            this.gesamtgewichtDataGridViewTextBoxColumn.DataPropertyName = "Gesamtgewicht";
+            this.gesamtgewichtDataGridViewTextBoxColumn.HeaderText = "Gesamtgewicht";
+            this.gesamtgewichtDataGridViewTextBoxColumn.Name = "gesamtgewichtDataGridViewTextBoxColumn";
+            this.gesamtgewichtDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // startzeitDataGridViewTextBoxColumn
+            // 
+            this.startzeitDataGridViewTextBoxColumn.DataPropertyName = "Startzeit";
+            this.startzeitDataGridViewTextBoxColumn.HeaderText = "Startzeit";
+            this.startzeitDataGridViewTextBoxColumn.Name = "startzeitDataGridViewTextBoxColumn";
+            this.startzeitDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // endzeitDataGridViewTextBoxColumn
+            // 
+            this.endzeitDataGridViewTextBoxColumn.DataPropertyName = "Endzeit";
+            this.endzeitDataGridViewTextBoxColumn.HeaderText = "Endzeit";
+            this.endzeitDataGridViewTextBoxColumn.Name = "endzeitDataGridViewTextBoxColumn";
+            this.endzeitDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // auftragUebersichtBindingSource1
+            // 
+            this.auftragUebersichtBindingSource1.DataMember = "AuftragUebersicht";
+            this.auftragUebersichtBindingSource1.DataSource = this.de2_uebung_fahrradkurierDataSet3;
+            // 
+            // de2_uebung_fahrradkurierDataSet3
+            // 
+            this.de2_uebung_fahrradkurierDataSet3.DataSetName = "de2_uebung_fahrradkurierDataSet3";
+            this.de2_uebung_fahrradkurierDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DimGray;
+            this.panel2.Controls.Add(this.buttonAuftragStarten);
+            this.panel2.Controls.Add(this.buttonAuftragstoppen);
+            this.panel2.Controls.Add(this.buttonPakete);
+            this.panel2.Controls.Add(this.buttonNeuerAuftrag);
+            this.panel2.Location = new System.Drawing.Point(3, 540);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1018, 31);
+            this.panel2.TabIndex = 3;
+            // 
+            // buttonAuftragStarten
+            // 
+            this.buttonAuftragStarten.Location = new System.Drawing.Point(538, 5);
+            this.buttonAuftragStarten.Name = "buttonAuftragStarten";
+            this.buttonAuftragStarten.Size = new System.Drawing.Size(105, 23);
+            this.buttonAuftragStarten.TabIndex = 2;
+            this.buttonAuftragStarten.Text = "Auftrag starten";
+            this.buttonAuftragStarten.UseVisualStyleBackColor = true;
+            this.buttonAuftragStarten.Click += new System.EventHandler(this.buttonAuftragStarten_Click);
+            // 
+            // buttonAuftragstoppen
+            // 
+            this.buttonAuftragstoppen.Location = new System.Drawing.Point(649, 5);
+            this.buttonAuftragstoppen.Name = "buttonAuftragstoppen";
+            this.buttonAuftragstoppen.Size = new System.Drawing.Size(105, 23);
+            this.buttonAuftragstoppen.TabIndex = 2;
+            this.buttonAuftragstoppen.Text = "Auftrag Stoppen";
+            this.buttonAuftragstoppen.UseVisualStyleBackColor = true;
+            this.buttonAuftragstoppen.Click += new System.EventHandler(this.buttonAuftragstoppen_Click);
+            // 
+            // buttonPakete
+            // 
+            this.buttonPakete.Location = new System.Drawing.Point(762, 5);
+            this.buttonPakete.Name = "buttonPakete";
+            this.buttonPakete.Size = new System.Drawing.Size(105, 23);
+            this.buttonPakete.TabIndex = 2;
+            this.buttonPakete.Text = "Paket hinzufügen";
+            this.buttonPakete.UseVisualStyleBackColor = true;
+            this.buttonPakete.Click += new System.EventHandler(this.buttonPakete_Click);
+            // 
+            // buttonNeuerAuftrag
+            // 
+            this.buttonNeuerAuftrag.Location = new System.Drawing.Point(910, 5);
+            this.buttonNeuerAuftrag.Name = "buttonNeuerAuftrag";
+            this.buttonNeuerAuftrag.Size = new System.Drawing.Size(105, 23);
+            this.buttonNeuerAuftrag.TabIndex = 2;
+            this.buttonNeuerAuftrag.Text = "Neuer Auftrag";
+            this.buttonNeuerAuftrag.UseVisualStyleBackColor = true;
+            this.buttonNeuerAuftrag.Click += new System.EventHandler(this.buttonNeuerAuftrag_Click);
+            // 
+            // auftragUebersichtBindingSource
+            // 
+            this.auftragUebersichtBindingSource.DataMember = "AuftragUebersicht";
+            this.auftragUebersichtBindingSource.DataSource = this.de2_uebung_fahrradkurierDataSet2;
+            // 
+            // de2_uebung_fahrradkurierDataSet2
+            // 
+            this.de2_uebung_fahrradkurierDataSet2.DataSetName = "de2_uebung_fahrradkurierDataSet2";
+            this.de2_uebung_fahrradkurierDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // fahrerBindingSource
+            // 
+            this.fahrerBindingSource.DataMember = "Fahrer";
+            this.fahrerBindingSource.DataSource = this.de2_uebung_fahrradkurierDataSet1;
+            // 
+            // de2_uebung_fahrradkurierDataSet1
+            // 
+            this.de2_uebung_fahrradkurierDataSet1.DataSetName = "de2_uebung_fahrradkurierDataSet1";
+            this.de2_uebung_fahrradkurierDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // fahrerAnzeigenTableAdapter
             // 
             this.fahrerAnzeigenTableAdapter.ClearBeforeFill = true;
@@ -295,121 +507,18 @@
             this.button2.Text = "Neuer Fahrer";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.DimGray;
-            this.panel2.Controls.Add(this.buttonNeuerAuftrag);
-            this.panel2.Location = new System.Drawing.Point(3, 540);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1018, 31);
-            this.panel2.TabIndex = 3;
-            // 
-            // buttonNeuerAuftrag
-            // 
-            this.buttonNeuerAuftrag.Location = new System.Drawing.Point(910, 5);
-            this.buttonNeuerAuftrag.Name = "buttonNeuerAuftrag";
-            this.buttonNeuerAuftrag.Size = new System.Drawing.Size(105, 23);
-            this.buttonNeuerAuftrag.TabIndex = 2;
-            this.buttonNeuerAuftrag.Text = "Neuer Auftrag";
-            this.buttonNeuerAuftrag.UseVisualStyleBackColor = true;
-            this.buttonNeuerAuftrag.Click += new System.EventHandler(this.buttonNeuerAuftrag_Click);
-            // 
-            // dataGridViewAuftraege
-            // 
-            this.dataGridViewAuftraege.AllowUserToAddRows = false;
-            this.dataGridViewAuftraege.AllowUserToDeleteRows = false;
-            this.dataGridViewAuftraege.AutoGenerateColumns = false;
-            this.dataGridViewAuftraege.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAuftraege.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.fahrerDataGridViewTextBoxColumn,
-            this.kundeDataGridViewTextBoxColumn,
-            this.statusDataGridViewTextBoxColumn,
-            this.kilometerDataGridViewTextBoxColumn,
-            this.datumDataGridViewTextBoxColumn,
-            this.gesamtgewichtDataGridViewTextBoxColumn,
-            this.startzeitDataGridViewTextBoxColumn,
-            this.endzeitDataGridViewTextBoxColumn});
-            this.dataGridViewAuftraege.DataSource = this.auftragUebersichtBindingSource;
-            this.dataGridViewAuftraege.Location = new System.Drawing.Point(7, 7);
-            this.dataGridViewAuftraege.Name = "dataGridViewAuftraege";
-            this.dataGridViewAuftraege.ReadOnly = true;
-            this.dataGridViewAuftraege.Size = new System.Drawing.Size(1011, 527);
-            this.dataGridViewAuftraege.TabIndex = 4;
-            // 
             // de2uebungfahrradkurierDataSetBindingSource
             // 
             this.de2uebungfahrradkurierDataSetBindingSource.DataSource = this.de2_uebung_fahrradkurierDataSet;
             this.de2uebungfahrradkurierDataSetBindingSource.Position = 0;
             // 
-            // de2_uebung_fahrradkurierDataSet2
-            // 
-            this.de2_uebung_fahrradkurierDataSet2.DataSetName = "de2_uebung_fahrradkurierDataSet2";
-            this.de2_uebung_fahrradkurierDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // auftragUebersichtBindingSource
-            // 
-            this.auftragUebersichtBindingSource.DataMember = "AuftragUebersicht";
-            this.auftragUebersichtBindingSource.DataSource = this.de2_uebung_fahrradkurierDataSet2;
-            // 
             // auftragUebersichtTableAdapter
             // 
             this.auftragUebersichtTableAdapter.ClearBeforeFill = true;
             // 
-            // fahrerDataGridViewTextBoxColumn
+            // auftragUebersichtTableAdapter1
             // 
-            this.fahrerDataGridViewTextBoxColumn.DataPropertyName = "Fahrer";
-            this.fahrerDataGridViewTextBoxColumn.HeaderText = "Fahrer";
-            this.fahrerDataGridViewTextBoxColumn.Name = "fahrerDataGridViewTextBoxColumn";
-            this.fahrerDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // kundeDataGridViewTextBoxColumn
-            // 
-            this.kundeDataGridViewTextBoxColumn.DataPropertyName = "Kunde";
-            this.kundeDataGridViewTextBoxColumn.HeaderText = "Kunde";
-            this.kundeDataGridViewTextBoxColumn.Name = "kundeDataGridViewTextBoxColumn";
-            this.kundeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // kilometerDataGridViewTextBoxColumn
-            // 
-            this.kilometerDataGridViewTextBoxColumn.DataPropertyName = "Kilometer";
-            this.kilometerDataGridViewTextBoxColumn.HeaderText = "Kilometer";
-            this.kilometerDataGridViewTextBoxColumn.Name = "kilometerDataGridViewTextBoxColumn";
-            this.kilometerDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // datumDataGridViewTextBoxColumn
-            // 
-            this.datumDataGridViewTextBoxColumn.DataPropertyName = "Datum";
-            this.datumDataGridViewTextBoxColumn.HeaderText = "Datum";
-            this.datumDataGridViewTextBoxColumn.Name = "datumDataGridViewTextBoxColumn";
-            this.datumDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // gesamtgewichtDataGridViewTextBoxColumn
-            // 
-            this.gesamtgewichtDataGridViewTextBoxColumn.DataPropertyName = "Gesamtgewicht";
-            this.gesamtgewichtDataGridViewTextBoxColumn.HeaderText = "Gesamtgewicht";
-            this.gesamtgewichtDataGridViewTextBoxColumn.Name = "gesamtgewichtDataGridViewTextBoxColumn";
-            this.gesamtgewichtDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // startzeitDataGridViewTextBoxColumn
-            // 
-            this.startzeitDataGridViewTextBoxColumn.DataPropertyName = "Startzeit";
-            this.startzeitDataGridViewTextBoxColumn.HeaderText = "Startzeit";
-            this.startzeitDataGridViewTextBoxColumn.Name = "startzeitDataGridViewTextBoxColumn";
-            this.startzeitDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // endzeitDataGridViewTextBoxColumn
-            // 
-            this.endzeitDataGridViewTextBoxColumn.DataPropertyName = "Endzeit";
-            this.endzeitDataGridViewTextBoxColumn.HeaderText = "Endzeit";
-            this.endzeitDataGridViewTextBoxColumn.Name = "endzeitDataGridViewTextBoxColumn";
-            this.endzeitDataGridViewTextBoxColumn.ReadOnly = true;
+            this.auftragUebersichtTableAdapter1.ClearBeforeFill = true;
             // 
             // MainWindow
             // 
@@ -420,20 +529,23 @@
             this.Name = "MainWindow";
             this.Text = "Fahrradkurier";
             this.Load += new System.EventHandler(this.MainWindow_Load);
+            this.ResizeEnd += new System.EventHandler(this.MainWindow_ResizeEnd);
             this.tabPanel.ResumeLayout(false);
             this.tabFahrer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.fahrerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFahrer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fahrerAnzeigenBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tabAuftraege.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuftraege)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.de2uebungfahrradkurierDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.auftragUebersichtBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet3)).EndInit();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.auftragUebersichtBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fahrerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.de2_uebung_fahrradkurierDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.de2uebungfahrradkurierDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -464,7 +576,6 @@
         private de2_uebung_fahrradkurierDataSet1 de2_uebung_fahrradkurierDataSet1;
         private System.Windows.Forms.BindingSource fahrerBindingSource;
         private DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet1TableAdapters.FahrerTableAdapter fahrerTableAdapter;
-        private System.Windows.Forms.DataGridView dataGridViewAuftraege;
         private System.Windows.Forms.BindingSource de2uebungfahrradkurierDataSetBindingSource;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button buttonNeuerAuftrag;
@@ -473,14 +584,27 @@
         private de2_uebung_fahrradkurierDataSet2 de2_uebung_fahrradkurierDataSet2;
         private System.Windows.Forms.BindingSource auftragUebersichtBindingSource;
         private DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet2TableAdapters.AuftragUebersichtTableAdapter auftragUebersichtTableAdapter;
+        private System.Windows.Forms.DataGridView dataGridViewAuftraege;
+        private de2_uebung_fahrradkurierDataSet3 de2_uebung_fahrradkurierDataSet3;
+        private System.Windows.Forms.BindingSource auftragUebersichtBindingSource1;
+        private DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSet3TableAdapters.AuftragUebersichtTableAdapter auftragUebersichtTableAdapter1;
+        private System.Windows.Forms.Button buttonPakete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Auftrag_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fahrerDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kundeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Strasse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PLZ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ort;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Land;
         private System.Windows.Forms.DataGridViewTextBoxColumn kilometerDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datumDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paketeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn gesamtgewichtDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn startzeitDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn endzeitDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button buttonAuftragStarten;
+        private System.Windows.Forms.Button buttonAuftragstoppen;
     }
 }
 
