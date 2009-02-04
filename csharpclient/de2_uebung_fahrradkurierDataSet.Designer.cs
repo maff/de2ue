@@ -286,6 +286,8 @@ namespace DE2_UE_Fahrradkurier {
             
             private global::System.Data.DataColumn columnPassnummer;
             
+            private global::System.Data.DataColumn columnFahrer_ID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public FahrerAnzeigenDataTable() {
                 this.TableName = "FahrerAnzeigen";
@@ -401,6 +403,13 @@ namespace DE2_UE_Fahrradkurier {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn Fahrer_IDColumn {
+                get {
+                    return this.columnFahrer_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -429,7 +438,7 @@ namespace DE2_UE_Fahrradkurier {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public FahrerAnzeigenRow AddFahrerAnzeigenRow(string Anrede, string Vorname, string Nachname, string Telefonnummer, string Email, string Strasse, int PLZ, string Ort, string Land, System.DateTime Geburtsdatum, int SVNummer, int Passnummer) {
+            public FahrerAnzeigenRow AddFahrerAnzeigenRow(string Anrede, string Vorname, string Nachname, string Telefonnummer, string Email, string Strasse, int PLZ, string Ort, string Land, System.DateTime Geburtsdatum, int SVNummer, int Passnummer, int Fahrer_ID) {
                 FahrerAnzeigenRow rowFahrerAnzeigenRow = ((FahrerAnzeigenRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Anrede,
@@ -443,10 +452,17 @@ namespace DE2_UE_Fahrradkurier {
                         Land,
                         Geburtsdatum,
                         SVNummer,
-                        Passnummer};
+                        Passnummer,
+                        Fahrer_ID};
                 rowFahrerAnzeigenRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFahrerAnzeigenRow);
                 return rowFahrerAnzeigenRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public FahrerAnzeigenRow FindByFahrer_ID(int Fahrer_ID) {
+                return ((FahrerAnzeigenRow)(this.Rows.Find(new object[] {
+                            Fahrer_ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -475,6 +491,7 @@ namespace DE2_UE_Fahrradkurier {
                 this.columnGeburtsdatum = base.Columns["Geburtsdatum"];
                 this.columnSVNummer = base.Columns["SVNummer"];
                 this.columnPassnummer = base.Columns["Passnummer"];
+                this.columnFahrer_ID = base.Columns["Fahrer_ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -503,6 +520,10 @@ namespace DE2_UE_Fahrradkurier {
                 base.Columns.Add(this.columnSVNummer);
                 this.columnPassnummer = new global::System.Data.DataColumn("Passnummer", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPassnummer);
+                this.columnFahrer_ID = new global::System.Data.DataColumn("Fahrer_ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFahrer_ID);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnFahrer_ID}, true));
                 this.columnAnrede.AllowDBNull = false;
                 this.columnAnrede.MaxLength = 20;
                 this.columnVorname.AllowDBNull = false;
@@ -522,6 +543,8 @@ namespace DE2_UE_Fahrradkurier {
                 this.columnGeburtsdatum.AllowDBNull = false;
                 this.columnSVNummer.AllowDBNull = false;
                 this.columnPassnummer.AllowDBNull = false;
+                this.columnFahrer_ID.AllowDBNull = false;
+                this.columnFahrer_ID.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -779,6 +802,16 @@ namespace DE2_UE_Fahrradkurier {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int Fahrer_ID {
+                get {
+                    return ((int)(this[this.tableFahrerAnzeigen.Fahrer_IDColumn]));
+                }
+                set {
+                    this[this.tableFahrerAnzeigen.Fahrer_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsEmailNull() {
                 return this.IsNull(this.tableFahrerAnzeigen.EmailColumn);
             }
@@ -951,6 +984,7 @@ namespace DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Geburtsdatum", "Geburtsdatum");
             tableMapping.ColumnMappings.Add("SVNummer", "SVNummer");
             tableMapping.ColumnMappings.Add("Passnummer", "Passnummer");
+            tableMapping.ColumnMappings.Add("Fahrer_ID", "Fahrer_ID");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -966,7 +1000,7 @@ namespace DE2_UE_Fahrradkurier.de2_uebung_fahrradkurierDataSetTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Anrede, Vorname, Nachname, Telefonnummer, Email, Strasse, PLZ, Ort, Land, " +
-                "Geburtsdatum, SVNummer, Passnummer FROM dbo.FahrerAnzeigen";
+                "Geburtsdatum, SVNummer, Passnummer, Fahrer_ID FROM FahrerAnzeigen";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

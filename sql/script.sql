@@ -362,61 +362,6 @@ begin
 	inner join Personen kp on kp.Person_ID = k.Person_ID
 end
 
-/* Protokoll Update Gesamtgewicht */
-/* create trigger AuftragUpdateGesamtgewicht
-on Auftraege
-for update as
-if update(Gesamtgewicht)
-begin
-insert into AuftragProtokoll(Auftrag_ID, Fahrer, Kunde, Aktion)
-select
-	i.Auftrag_ID,
-	fp.Vorname + ' ' + fp.Nachname,
-	kp.Vorname + ' ' + kp.Nachname,
-	'UPDATE Gesamtgewicht: ' + convert(varchar, isnull(d.Gesamtgewicht,0)) + ' -> ' + convert(varchar, isnull(i.Gesamtgewicht,0))
-from inserted i
-inner join deleted d on i.Auftrag_ID = d.Auftrag_ID
-inner join Fahrer f on i.Fahrer_ID = f.Fahrer_ID
-inner join Kunden k on i.Kunde_ID = k.Kunde_ID
-inner join Personen fp on fp.Person_ID = f.Person_ID
-inner join Personen kp on kp.Person_ID = k.Person_ID
-end */
-
-/*create proc AuftragUebersicht @s int
-as
-select
-	fp.Vorname + ' ' + fp.Nachname as Fahrer,
-	kp.Vorname + ' ' + kp.Nachname as Kunde,
-    s.Statustitel,
-	a.Kilometer,
-	a.Datum,
-    a.Gesamtgewicht,
-	a.Startzeit,
-	a.Endzeit
-from Auftraege a
-inner join Fahrer f on a.Fahrer_ID = f.Fahrer_ID
-inner join Kunden k on a.Kunde_ID = k.Kunde_ID
-inner join Personen fp on fp.Person_ID = f.Person_ID
-inner join Personen kp on kp.Person_ID = k.Person_ID
-inner join Status s on s.Status_ID = a.Status_ID
-where a.Status_ID = @s*/
-
-
-
-/*select f.fahrer_ID as 'ID Fahrer', year(a.datum) as 'Jahr', month(a.datum) as 'Monat', p.nachname as 'Name', p.Vorname as 'Vorname', 
--- sum(datediff(hour ,b.startzeit, b.endzeit)) as Bereitschaftszeit, 
--- sum(gesamtgewicht) as Kilo, sum(kilometer) as Gesamtfahrstrecke, 
-((sum(kilometer) * sum(gesamtgewicht) * 0.4) + (sum(datediff(hour ,b.startzeit, b.endzeit))*20)) as Lohn
---sum(datediff(hour ,b.startzeit, b.endzeit))*20 as Betrag
-from bereitschaftszeiten as b
-inner join fahrer as f on b.fahrer_ID = f.fahrer_ID
-inner join personen as p on p.person_ID = f.person_ID
-inner join auftraege as a on a.fahrer_ID = f.fahrer_ID
-group by year(a.datum),month(a.datum) ,p.nachname, p.Vorname, f.fahrer_ID*/
-
-/*select sum(kilometer) * sum(gesamtgewicht)/100 * 0.4 from auftraege
-where fahrer_ID = 1001*/
-
 create view FahrerAnzeigen as
 	select
 		f.Fahrer_ID,
@@ -647,6 +592,64 @@ end
 
 go
 
+create proc FahrerBearbeiten
+	@Fahrer_ID int,
+	@Anrede varchar(20),
+	@Vorname nvarchar(30),
+	@Nachname nvarchar(30),
+	@Telefonnummer varchar(20), 
+	@EMail varchar(40),
+	@Strasse nvarchar(50),
+	@PLZ int,
+	@Ort nvarchar(60),
+	@Land nvarchar(30),
+	@Geburtsdatum datetime,
+	@SVNummer int,
+	@PassNummer int
+as
+begin
+	declare @Ort_ID as int
+	declare @Adresse_ID as int
+	declare @Person_ID as int
+
+	declare @OrtTmp as int
+	select @OrtTmp = (select Count(Ort_ID) from Orte where Ortsname=@Ort and PLZ=@PLZ and Land=@Land)
+
+	if (@OrtTmp = 1)
+		begin
+			select @Ort_ID = (select Ort_ID from Orte where Ortsname=@Ort and PLZ=@PLZ and Land=@Land)
+		end
+	else
+		begin
+			insert into Orte(Ortsname, PLZ, Land) values (@Ort, @PLZ, @Land)
+			select @Ort_ID = @@identity
+		end
+
+	declare @AdresseTmp as int
+	select @AdresseTmp = (select Count(Adresse_ID) from Adressen where Strasse=@Strasse and Ort_ID=@Ort_ID)
+
+	if (@AdresseTmp = 1)
+		begin
+			select @Adresse_ID = (select Adresse_ID from Adressen where Strasse=@Strasse and Ort_ID=@Ort_ID)
+		end
+	else
+		begin
+			insert into Adressen(Strasse, Ort_ID) values (@Strasse, @Ort_ID)
+			select @Adresse_ID = @@identity
+		end
+
+	
+	select @Person_ID = (select Person_ID from Fahrer where Fahrer_ID=@Fahrer_ID)
+
+	update Personen set Anrede=@Anrede, Vorname=@Vorname, Nachname=@Nachname, Telefonnummer=@Telefonnummer, EMail=@EMail where Person_ID=@Person_ID
+	
+	update Person_Adresse set Adresse_ID=@Adresse_ID where Person_ID=@Person_ID
+
+	update Fahrer set Geburtsdatum=@Geburtsdatum, SVNummer=@SVNummer, PassNummer=@PassNummer where Fahrer_ID=@Fahrer_ID
+end
+
+go
+
 create proc NeuerKunde
 	@Anrede varchar(20),
 	@Vorname nvarchar(30),
@@ -706,6 +709,64 @@ begin
 
 	select @Kunde_ID = @@identity
 	return @Kunde_ID
+end
+
+go
+
+create proc KundeBearbeiten
+	@Kunde_ID int,
+	@Anrede varchar(20),
+	@Vorname nvarchar(30),
+	@Nachname nvarchar(30),
+	@Telefonnummer varchar(20), 
+	@EMail varchar(40),
+	@Strasse nvarchar(50),
+	@PLZ int,
+	@Ort nvarchar(60),
+	@Land nvarchar(30),
+	@Firma nvarchar(50),
+	@KreditkartenNummer varchar(30),
+	@KreditkartenPZ varchar(4),
+	@PremiumKunde bit	
+as
+begin
+	declare @Ort_ID as int
+	declare @Adresse_ID as int
+	declare @Person_ID as int
+
+	declare @OrtTmp as int
+	select @OrtTmp = (select Count(Ort_ID) from Orte where Ortsname=@Ort and PLZ=@PLZ and Land=@Land)
+
+	if (@OrtTmp = 1)
+		begin
+			select @Ort_ID = (select Ort_ID from Orte where Ortsname=@Ort and PLZ=@PLZ and Land=@Land)
+		end
+	else
+		begin
+			insert into Orte(Ortsname, PLZ, Land) values (@Ort, @PLZ, @Land)
+			select @Ort_ID = @@identity
+		end
+
+	declare @AdresseTmp as int
+	select @AdresseTmp = (select Count(Adresse_ID) from Adressen where Strasse=@Strasse and Ort_ID=@Ort_ID)
+
+	if (@AdresseTmp = 1)
+		begin
+			select @Adresse_ID = (select Adresse_ID from Adressen where Strasse=@Strasse and Ort_ID=@Ort_ID)
+		end
+	else
+		begin
+			insert into Adressen(Strasse, Ort_ID) values (@Strasse, @Ort_ID)
+			select @Adresse_ID = @@identity
+		end
+
+	select @Person_ID = (select Person_ID from Kunde where Kunde_ID=@Kunde_ID)
+
+	update Personen set Anrede=@Anrede, Vorname=@Vorname, Nachname=@Nachname, Telefonnummer=@Telefonnummer, EMail=@EMail where Person_ID=@Person_ID
+	
+	update Person_Adresse set Adresse_ID=@Adresse_ID where Person_ID=@Person_ID
+
+	update Kunden set Firma=@Firma, KreditkartenNummer=@KreditkartenNummer, KreditkartenPZ=@KreditkartenPZ, PremiumKunde=@PremiumKunde where Kunde_ID=@Kunde_ID
 end
 
 go
@@ -777,6 +838,72 @@ begin
 	insert into Auftrag_Adresse(Auftrag_ID, Adresse_ID) values (@Auftrag_ID, @Adresse_ID)
 	
 	return @Auftrag_ID
+end
+
+go
+
+create proc AuftragBearbeiten
+	@Auftrag_ID int,
+	@Fahrer_ID int,
+	@Kunde_ID int, 
+	@Statustitel varchar(20),
+	@Kilometer decimal(10,2), 
+	@Strasse nvarchar(50),
+	@PLZ int,
+	@Ort nvarchar(60),
+	@Land nvarchar(30)
+as
+begin
+	declare @Ort_ID as int
+	declare @Adresse_ID as int
+	declare @Status_ID as int
+
+	declare @OrtTmp as int
+	select @OrtTmp = (select Count(Ort_ID) from Orte where Ortsname=@Ort and PLZ=@PLZ and Land=@Land)
+
+	if (@OrtTmp = 1)
+		begin
+			select @Ort_ID = (select Ort_ID from Orte where Ortsname=@Ort and PLZ=@PLZ and Land=@Land)
+		end
+	else
+		begin
+			insert into Orte(Ortsname, PLZ, Land) values (@Ort, @PLZ, @Land)
+			select @Ort_ID = @@identity
+		end
+
+	declare @AdresseTmp as int
+	select @AdresseTmp = (select Count(Adresse_ID) from Adressen where Strasse=@Strasse and Ort_ID=@Ort_ID)
+
+	if (@AdresseTmp = 1)
+		begin
+			select @Adresse_ID = (select Adresse_ID from Adressen where Strasse=@Strasse and Ort_ID=@Ort_ID)
+		end
+	else
+		begin
+			insert into Adressen(Strasse, Ort_ID) values (@Strasse, @Ort_ID)
+			select @Adresse_ID = @@identity
+		end
+
+	declare @StatusTmp as int
+	select @StatusTmp = (select Count(Status_ID) from Status where Statustitel=@Statustitel)
+
+	if (@StatusTmp = 1)
+		begin
+			select @Status_ID = (select Status_ID from Status where Statustitel=@Statustitel)
+		end
+	else
+		begin
+			insert into Status(Statustitel) values (@Statustitel)
+			select @Status_ID = @@identity
+		end
+
+	begin transaction
+		update Auftraege with(tablockx) set
+			Fahrer_ID=@Fahrer_ID, Kunde_ID=@Kunde_ID, Status_ID=@Status_ID, Kilometer=@Kilometer
+		where Auftrag_ID=@Auftrag_ID		
+	commit
+
+	update Auftrag_Adresse set Adresse_ID=@Adresse_ID where Auftrag_ID=@Auftrag_ID
 end
 
 go
@@ -908,9 +1035,12 @@ grant execute on AuftraegeProKunde to buero
 grant execute on AuftragNachStatusID to buero
 grant execute on AuftragStarten to buero
 grant execute on AuftragStoppen to buero
+grant execute on AuftragBearbeiten to buero
 grant execute on NeuerAuftrag to buero
 grant execute on NeuerFahrer to buero
+grant execute on FahrerBearbeiten to buero
 grant execute on NeuerKunde to buero
+grant execute on KundeBearbeiten to buero
 grant execute on NeuesPaket to buero
 grant execute on AuftragRechnung to buero
 --------------------------------------------------------
@@ -938,41 +1068,3 @@ grant select on Pakete to kunde
 grant select on StatusUebersicht to kunde
 grant select on UmsatzProKunde to kunde
 grant execute on AuftragRechnung to kunde
-
-
-
-/*select * from StatusUebersicht
-select * from IstEinsatzzeit
-select * from Lohnhilfe
-select * from Lohn
-select * from AuftragUebersicht
-select * from UmsatzProKunde
-select * from KundenAnzeigen
-select * from FahrerAnzeigen
-
-select *  from adressen
-select * from orte
-select * from status
-
-
-
-select * from auftraege
-select * from bereitschaftszeiten
-select * from fahrer
-
-
-AuftragNachStatusID 2
-AuftragNachStatusName Offen
-
-declare @Auftrag_ID as int
-execute @Auftrag_ID = NeuerAuftrag 1000, 1000, 'Neu', 10.4, 'Teststrasse 12', 6020, 'Innsbruck', 'Österreich'
-execute NeuesPaket @Auftrag_ID, 'Testpaket 1', 10, 5, 15, 2500, 0
-execute NeuesPaket @Auftrag_ID, 'Testpaket 2', 15, 10, 5, 2500, 0
-execute NeuesPaket @Auftrag_ID, 'Testpaket 3', 5, 15, 10, 2500, 0
-
-declare @Auftrag_ID as int
-execute @Auftrag_ID = NeuerAuftrag 1000, 1000, 'TestNeu', 15, 'MuseumStrasse 30', 6020, 'Innsbruck', 'Österreich'
-execute NeuesPaket @Auftrag_ID, 'NeuTestpaket 1', 10, 5, 15, 2222, 0
-execute NeuesPaket @Auftrag_ID, 'NeuTestpaket 2', 15, 10, 5, 2222, 0
-execute NeuesPaket @Auftrag_ID, 'NeuTestpaket 3', 5, 15, 10, 2222, 0
-*/

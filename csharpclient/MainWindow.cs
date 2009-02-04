@@ -43,7 +43,7 @@ namespace DE2_UE_Fahrradkurier
 
         void fahrerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.fahrerAnzeigenTableAdapter.Fill(this.de2_uebung_fahrradkurierDataSet.FahrerAnzeigen);
+            reloadFahrerGrid();
         }
 
         private void buttonNeuerAuftrag_Click(object sender, EventArgs e)
@@ -68,12 +68,12 @@ namespace DE2_UE_Fahrradkurier
             this.auftragUebersichtTableAdapter1.Fill(this.de2_uebung_fahrradkurierDataSet3.AuftragUebersicht);
         }
 
-        DataGridViewRow selectedRow;
-        private bool fetchSelectedRow()
+        DataGridViewRow selectedAuftragRow;
+        private bool fetchSelectedAuftragRow()
         {
             if (dataGridViewAuftraege.SelectedRows.Count == 1)
             {
-                this.selectedRow = dataGridViewAuftraege.SelectedRows[0];
+                this.selectedAuftragRow = dataGridViewAuftraege.SelectedRows[0];
                 return true;
             }
             else
@@ -85,9 +85,9 @@ namespace DE2_UE_Fahrradkurier
 
         private void buttonPakete_Click(object sender, EventArgs e)
         {
-            if (this.fetchSelectedRow())
+            if (this.fetchSelectedAuftragRow())
             {
-                Paket paket = new Paket(int.Parse(this.selectedRow.Cells["Auftrag_ID"].Value.ToString()));
+                Paket paket = new Paket(int.Parse(this.selectedAuftragRow.Cells["Auftrag_ID"].Value.ToString()));
                 paket.FormClosed += new FormClosedEventHandler(paket_FormClosed);
                 paket.ShowDialog();
             }
@@ -100,9 +100,9 @@ namespace DE2_UE_Fahrradkurier
 
         private void buttonAuftragStarten_Click(object sender, EventArgs e)
         {
-            if (this.fetchSelectedRow())
+            if (this.fetchSelectedAuftragRow())
             {
-                AuftragStartStop astst = new AuftragStartStop(int.Parse(this.selectedRow.Cells["Auftrag_ID"].Value.ToString()), AuftragStartStop.Type.Start);
+                AuftragStartStop astst = new AuftragStartStop(int.Parse(this.selectedAuftragRow.Cells["Auftrag_ID"].Value.ToString()), AuftragStartStop.Type.Start);
                 astst.FormClosed += new FormClosedEventHandler(astst_FormClosed);
                 astst.ShowDialog();
             }
@@ -110,9 +110,9 @@ namespace DE2_UE_Fahrradkurier
 
         private void buttonAuftragstoppen_Click(object sender, EventArgs e)
         {
-            if (this.fetchSelectedRow())
+            if (this.fetchSelectedAuftragRow())
             {
-                AuftragStartStop astst = new AuftragStartStop(int.Parse(this.selectedRow.Cells["Auftrag_ID"].Value.ToString()), AuftragStartStop.Type.Stop);
+                AuftragStartStop astst = new AuftragStartStop(int.Parse(this.selectedAuftragRow.Cells["Auftrag_ID"].Value.ToString()), AuftragStartStop.Type.Stop);
                 astst.FormClosed += new FormClosedEventHandler(astst_FormClosed);
                 astst.ShowDialog();
             }
@@ -121,6 +121,40 @@ namespace DE2_UE_Fahrradkurier
         void astst_FormClosed(object sender, FormClosedEventArgs e)
         {
             reloadAuftragGrid();
+        }
+
+
+
+        DataGridViewRow selectedFahrerRow;
+        private bool fetchSelectedFahrerRow()
+        {
+            if (dataGridViewFahrer.SelectedRows.Count == 1)
+            {
+                this.selectedFahrerRow = dataGridViewFahrer.SelectedRows[0];
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Bitte die gewünschte Fahrerzeile markieren");
+                return false;
+            }
+        }
+
+
+        void reloadFahrerGrid()
+        {
+            this.fahrerAnzeigenTableAdapter.Fill(this.de2_uebung_fahrradkurierDataSet.FahrerAnzeigen);
+        }
+
+
+        private void buttonFahrerBearbeiten_Click(object sender, EventArgs e)
+        {
+            if (this.fetchSelectedFahrerRow())
+            {
+                Fahrer fahrerForm = new Fahrer(int.Parse(this.selectedFahrerRow.Cells["Fahrer_ID"].Value.ToString()));
+                fahrerForm.FormClosed += new FormClosedEventHandler(fahrerForm_FormClosed);
+                fahrerForm.ShowDialog();
+            }
         }
 
       

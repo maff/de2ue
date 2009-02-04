@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="de2_uebung_fahrradkurierConnectionString (Settings)" DbObjectName="de2_uebung_fahrradkurier.dbo.FahrerAnzeigen" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT Anrede, Vorname, Nachname, Telefonnummer, Email, Strasse, PLZ, Ort, Land, Geburtsdatum, SVNummer, Passnummer FROM dbo.FahrerAnzeigen</CommandText>
+                    <CommandText>SELECT Anrede, Vorname, Nachname, Telefonnummer, Email, Strasse, PLZ, Ort, Land, Geburtsdatum, SVNummer, Passnummer, Fahrer_ID FROM FahrerAnzeigen</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -31,6 +31,7 @@
               <Mapping SourceColumn="Geburtsdatum" DataSetColumn="Geburtsdatum" />
               <Mapping SourceColumn="SVNummer" DataSetColumn="SVNummer" />
               <Mapping SourceColumn="Passnummer" DataSetColumn="Passnummer" />
+              <Mapping SourceColumn="Fahrer_ID" DataSetColumn="Fahrer_ID" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -39,76 +40,81 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="de2_uebung_fahrradkurierDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="de2_uebung_fahrradkurierDataSet" msprop:Generator_UserDSName="de2_uebung_fahrradkurierDataSet" msprop:EnableTableAdapterManager="True">
+  <xs:element name="de2_uebung_fahrradkurierDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="de2_uebung_fahrradkurierDataSet" msprop:Generator_DataSetName="de2_uebung_fahrradkurierDataSet" msprop:EnableTableAdapterManager="True">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="FahrerAnzeigen" msprop:Generator_UserTableName="FahrerAnzeigen" msprop:Generator_RowDeletedName="FahrerAnzeigenRowDeleted" msprop:Generator_TableClassName="FahrerAnzeigenDataTable" msprop:Generator_RowChangedName="FahrerAnzeigenRowChanged" msprop:Generator_RowClassName="FahrerAnzeigenRow" msprop:Generator_RowChangingName="FahrerAnzeigenRowChanging" msprop:Generator_RowEvArgName="FahrerAnzeigenRowChangeEvent" msprop:Generator_RowEvHandlerName="FahrerAnzeigenRowChangeEventHandler" msprop:Generator_TablePropName="FahrerAnzeigen" msprop:Generator_TableVarName="tableFahrerAnzeigen" msprop:Generator_RowDeletingName="FahrerAnzeigenRowDeleting">
+        <xs:element name="FahrerAnzeigen" msprop:Generator_UserTableName="FahrerAnzeigen" msprop:Generator_RowDeletedName="FahrerAnzeigenRowDeleted" msprop:Generator_RowChangedName="FahrerAnzeigenRowChanged" msprop:Generator_RowClassName="FahrerAnzeigenRow" msprop:Generator_RowChangingName="FahrerAnzeigenRowChanging" msprop:Generator_RowEvArgName="FahrerAnzeigenRowChangeEvent" msprop:Generator_RowEvHandlerName="FahrerAnzeigenRowChangeEventHandler" msprop:Generator_TableClassName="FahrerAnzeigenDataTable" msprop:Generator_TableVarName="tableFahrerAnzeigen" msprop:Generator_RowDeletingName="FahrerAnzeigenRowDeleting" msprop:Generator_TablePropName="FahrerAnzeigen">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Anrede" msprop:Generator_UserColumnName="Anrede" msprop:Generator_ColumnPropNameInRow="Anrede" msprop:Generator_ColumnVarNameInTable="columnAnrede" msprop:Generator_ColumnPropNameInTable="AnredeColumn">
+              <xs:element name="Anrede" msprop:Generator_UserColumnName="Anrede" msprop:Generator_ColumnVarNameInTable="columnAnrede" msprop:Generator_ColumnPropNameInRow="Anrede" msprop:Generator_ColumnPropNameInTable="AnredeColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="20" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Vorname" msprop:Generator_UserColumnName="Vorname" msprop:Generator_ColumnPropNameInRow="Vorname" msprop:Generator_ColumnVarNameInTable="columnVorname" msprop:Generator_ColumnPropNameInTable="VornameColumn">
+              <xs:element name="Vorname" msprop:Generator_UserColumnName="Vorname" msprop:Generator_ColumnVarNameInTable="columnVorname" msprop:Generator_ColumnPropNameInRow="Vorname" msprop:Generator_ColumnPropNameInTable="VornameColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Nachname" msprop:Generator_UserColumnName="Nachname" msprop:Generator_ColumnPropNameInRow="Nachname" msprop:Generator_ColumnVarNameInTable="columnNachname" msprop:Generator_ColumnPropNameInTable="NachnameColumn">
+              <xs:element name="Nachname" msprop:Generator_UserColumnName="Nachname" msprop:Generator_ColumnVarNameInTable="columnNachname" msprop:Generator_ColumnPropNameInRow="Nachname" msprop:Generator_ColumnPropNameInTable="NachnameColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Telefonnummer" msprop:Generator_UserColumnName="Telefonnummer" msprop:Generator_ColumnPropNameInRow="Telefonnummer" msprop:Generator_ColumnVarNameInTable="columnTelefonnummer" msprop:Generator_ColumnPropNameInTable="TelefonnummerColumn">
+              <xs:element name="Telefonnummer" msprop:Generator_UserColumnName="Telefonnummer" msprop:Generator_ColumnVarNameInTable="columnTelefonnummer" msprop:Generator_ColumnPropNameInRow="Telefonnummer" msprop:Generator_ColumnPropNameInTable="TelefonnummerColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="20" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Email" msprop:Generator_UserColumnName="Email" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInTable="EmailColumn" minOccurs="0">
+              <xs:element name="Email" msprop:Generator_UserColumnName="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="40" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Strasse" msprop:Generator_UserColumnName="Strasse" msprop:Generator_ColumnPropNameInRow="Strasse" msprop:Generator_ColumnVarNameInTable="columnStrasse" msprop:Generator_ColumnPropNameInTable="StrasseColumn">
+              <xs:element name="Strasse" msprop:Generator_UserColumnName="Strasse" msprop:Generator_ColumnVarNameInTable="columnStrasse" msprop:Generator_ColumnPropNameInRow="Strasse" msprop:Generator_ColumnPropNameInTable="StrasseColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="PLZ" msprop:Generator_UserColumnName="PLZ" msprop:Generator_ColumnPropNameInRow="PLZ" msprop:Generator_ColumnVarNameInTable="columnPLZ" msprop:Generator_ColumnPropNameInTable="PLZColumn" type="xs:int" />
-              <xs:element name="Ort" msprop:Generator_UserColumnName="Ort" msprop:Generator_ColumnPropNameInRow="Ort" msprop:Generator_ColumnVarNameInTable="columnOrt" msprop:Generator_ColumnPropNameInTable="OrtColumn">
+              <xs:element name="PLZ" msprop:Generator_UserColumnName="PLZ" msprop:Generator_ColumnVarNameInTable="columnPLZ" msprop:Generator_ColumnPropNameInRow="PLZ" msprop:Generator_ColumnPropNameInTable="PLZColumn" type="xs:int" />
+              <xs:element name="Ort" msprop:Generator_UserColumnName="Ort" msprop:Generator_ColumnVarNameInTable="columnOrt" msprop:Generator_ColumnPropNameInRow="Ort" msprop:Generator_ColumnPropNameInTable="OrtColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="60" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Land" msprop:Generator_UserColumnName="Land" msprop:Generator_ColumnPropNameInRow="Land" msprop:Generator_ColumnVarNameInTable="columnLand" msprop:Generator_ColumnPropNameInTable="LandColumn">
+              <xs:element name="Land" msprop:Generator_UserColumnName="Land" msprop:Generator_ColumnVarNameInTable="columnLand" msprop:Generator_ColumnPropNameInRow="Land" msprop:Generator_ColumnPropNameInTable="LandColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Geburtsdatum" msprop:Generator_UserColumnName="Geburtsdatum" msprop:Generator_ColumnPropNameInRow="Geburtsdatum" msprop:Generator_ColumnVarNameInTable="columnGeburtsdatum" msprop:Generator_ColumnPropNameInTable="GeburtsdatumColumn" type="xs:dateTime" />
-              <xs:element name="SVNummer" msprop:Generator_UserColumnName="SVNummer" msprop:Generator_ColumnPropNameInRow="SVNummer" msprop:Generator_ColumnVarNameInTable="columnSVNummer" msprop:Generator_ColumnPropNameInTable="SVNummerColumn" type="xs:int" />
-              <xs:element name="Passnummer" msprop:Generator_UserColumnName="Passnummer" msprop:Generator_ColumnPropNameInRow="Passnummer" msprop:Generator_ColumnVarNameInTable="columnPassnummer" msprop:Generator_ColumnPropNameInTable="PassnummerColumn" type="xs:int" />
+              <xs:element name="Geburtsdatum" msprop:Generator_UserColumnName="Geburtsdatum" msprop:Generator_ColumnVarNameInTable="columnGeburtsdatum" msprop:Generator_ColumnPropNameInRow="Geburtsdatum" msprop:Generator_ColumnPropNameInTable="GeburtsdatumColumn" type="xs:dateTime" />
+              <xs:element name="SVNummer" msprop:Generator_UserColumnName="SVNummer" msprop:Generator_ColumnVarNameInTable="columnSVNummer" msprop:Generator_ColumnPropNameInRow="SVNummer" msprop:Generator_ColumnPropNameInTable="SVNummerColumn" type="xs:int" />
+              <xs:element name="Passnummer" msprop:Generator_UserColumnName="Passnummer" msprop:Generator_ColumnVarNameInTable="columnPassnummer" msprop:Generator_ColumnPropNameInRow="Passnummer" msprop:Generator_ColumnPropNameInTable="PassnummerColumn" type="xs:int" />
+              <xs:element name="Fahrer_ID" msprop:Generator_UserColumnName="Fahrer_ID" msprop:Generator_ColumnPropNameInRow="Fahrer_ID" msprop:Generator_ColumnVarNameInTable="columnFahrer_ID" msprop:Generator_ColumnPropNameInTable="Fahrer_IDColumn" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:FahrerAnzeigen" />
+      <xs:field xpath="mstns:Fahrer_ID" />
+    </xs:unique>
   </xs:element>
 </xs:schema>
